@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vrddi VN | GTM Strategy Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-light: #F8FAFB;
+            --sidebar-bg: #FFFFFF;
+            --card-bg: #FFFFFF;
+            --accent: #006341; 
+            --accent-bright: #008f5d;
+            --text-main: #1A202C;
+            --text-muted: #718096;
+            --border: #E2E8F0;
+            --radius-lg: 24px;
+            --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            --status-done: #059669;
+            --status-done-bg: #ECFDF5;
+            --status-progress: #D97706;
+            --status-progress-bg: #FFFBEB;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            --highlight-color: rgba(0, 99, 65, 0.2);
+        }
+
+        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background-color: var(--bg-light);
+            background-image: radial-gradient(circle at 80% 20%, rgba(0, 99, 65, 0.05) 0%, transparent 40%);
+            color: var(--text-main); margin: 0; display: flex; height: 100vh; overflow: hidden;
+        }
+
+        .sidebar { 
+            width: 320px; 
+            flex: 0 0 320px; 
+            padding: 40px 24px; 
+            background: var(--sidebar-bg); 
+            border-right: 1px solid var(--border); 
+            display: flex; 
+            flex-direction: column; 
+            box-shadow: 4px 0 15px rgba(0,0,0,0.02); 
+            z-index: 10;
+        }
+
+        .logo { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.00rem; letter-spacing: 1.6px; margin-bottom: 50px; display: flex; align-items: center; gap: 12px; color: var(--accent); }
+        .logo-box { width: 35px; height: 35px; background: var(--accent); border-radius: 10px; flex: 0 0 35px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0, 99, 65, 0.2); }
+
+        .nav-group { overflow-y: auto; flex-grow: 1; padding-right: 5px; }
+        .nav-btn { padding: 14px 18px; border-radius: 16px; cursor: pointer; transition: var(--transition); color: var(--text-muted); font-size: 0.8rem; font-weight: 600; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center; border: 1px solid transparent; text-transform: uppercase; white-space: nowrap; }
+        .nav-btn:hover { background: #F1F5F9; color: var(--text-main); }
+        .nav-btn.active { background: #F0FDF4; color: var(--accent); border: 1px solid rgba(0, 99, 65, 0.1); }
+
+        .main { 
+            flex: 1; 
+            min-width: 0; 
+            padding: 50px 60px; 
+            overflow-y: auto; 
+        }
+
+        .header { margin-bottom: 40px; }
+        .label { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 4px; color: var(--accent); font-weight: 700; margin-bottom: 12px; display: block; opacity: 0.8; }
+        .project-title-wrapper { display: flex; align-items: center; gap: 20px; }
+        .project-number { font-family: 'Montserrat', sans-serif; font-size: 4rem; font-weight: 800; color: transparent; -webkit-text-stroke: 1.5px rgba(0, 99, 65, 0.1); line-height: 1; flex-shrink: 0; }
+        h1#tab-title { font-family: 'Montserrat', sans-serif; font-size: 2.2rem; font-weight: 800; margin: 0; letter-spacing: -1px; color: #2D3748; text-transform: uppercase; }
+
+        .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 25px; max-width: 1400px; margin-bottom: 50px; width: 100%; }
+        .card { background: var(--card-bg); border-radius: var(--radius-lg); padding: 30px; border: 1px solid var(--border); transition: var(--transition); grid-column: span 4; box-shadow: var(--shadow); height: fit-content; }
+        .card:hover { transform: translateY(-5px); border-color: var(--accent-bright); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08); }
+        .card-large { grid-column: span 6; }
+        .card-full { grid-column: span 12; }
+        .card-title { font-family: 'Montserrat', sans-serif; font-size: 0.95rem; font-weight: 700; margin-bottom: 20px; color: var(--accent); display: flex; align-items: center; gap: 10px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 2px solid #F1F5F9; padding-bottom: 10px; }
+
+        .desc { font-size: 0.95rem; line-height: 1.6; color: #4A5568; margin-bottom: 15px; word-wrap: break-word; }
+        .data-table { width: 100%; border-collapse: collapse; margin-bottom: 15px; table-layout: fixed; }
+        .data-table th { text-align: left; padding: 12px 8px; font-size: 0.8rem; color: var(--text-muted); border-bottom: 2px solid var(--border); }
+        .data-table td { padding: 14px 8px; border-bottom: 1px solid #F1F5F9; font-size: 0.9rem; vertical-align: top; color: #2D3748; word-wrap: break-word; }
+        
+        .plan-box { background: #F8FAFB; padding: 20px; border-radius: 18px; margin-top: 10px; border-left: 5px solid var(--accent); font-size: 0.9rem; line-height: 1.6; color: #4A5568; }
+        .highlight-box { background: #f0fdf4; padding: 15px; border-radius: 12px; border: 1px dashed var(--accent); margin: 10px 0; }
+
+        .tab-content { display: none; width: 100%; }
+        .tab-content.active { display: block; animation: fadeInUp 0.4s ease forwards; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        ul.list-detail { padding-left: 18px; margin: 10px 0; color: #4A5568; font-size: 0.9rem; line-height: 1.7; }
+        ul.list-detail li { margin-bottom: 8px; }
+        .tag { display: inline-block; padding: 4px 12px; background: #EDF2F7; border-radius: 20px; font-size: 0.75rem; font-weight: 700; color: #4A5568; margin-right: 5px; }
+
+        /* BỔ SUNG THEO YÊU CẦU */
+        .kw-highlight {
+            background: linear-gradient(to bottom, transparent 60%, var(--highlight-color) 60%);
+            display: inline;
+        }
+        .num-box {
+            display: inline-block;
+            padding: 2px 10px;
+            background: #FFFFFF;
+            border: 1.5px solid var(--accent);
+            border-radius: 8px;
+            font-weight: 700;
+            color: var(--accent);
+            margin: 0 2px;
+        }
+        .hook-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="logo">
+            <div class="logo-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"/></svg>
+            </div> 
+            <span>VRDDI Vietnam</span>
+        </div>
+        <div class="nav-group">
+            <div class="nav-btn active" onclick="showTab(event, 'key-message', '01')">01. Key Message <span>●</span></div>
+            <div class="nav-btn" onclick="showTab(event, 'goals', '02')">02. Mục tiêu 6 tháng <span>●</span></div>
+            <div class="nav-btn" onclick="showTab(event, 'strategy', '03')">03. Chiến lược GTM <span>●</span></div>
+            <div class="nav-btn" onclick="showTab(event, 'target', '04')">04. Khách hàng mục tiêu <span>●</span></div>
+            <div class="nav-btn" onclick="showTab(event, 'execution', '05')">05. Giai đoạn triển khai <span>●</span></div>
+            <div class="nav-btn" onclick="showTab(event, 'growth', '06')">06. Growth Loop <span>●</span></div>
+            <div class="nav-btn" onclick="showTab(event, 'pricing', '07')">07. Chiến lược giá <span>●</span></div>
+            <div class="nav-btn" onclick="showTab(event, 'risks', '08')">08. Rủi ro & Giải pháp <span>●</span></div>
+            <div class="nav-btn" onclick="showTab(event, 'success', '09')">09. Yếu tố thành công <span>●</span></div>
+            <div class="nav-btn" onclick="showTab(event, 'ads-tab', '10')">10. Quảng cáo <span>●</span></div>
+            <div class="nav-btn" onclick="showTab(event, 'linkedin-tab', '11')">11. Linkedin Content <span>●</span></div>
+        </div>
+    </aside>
+
+    <main class="main">
+        <div class="header">
+            <span class="label">Go To Market Plan | GTM 2026</span>
+            <div class="project-title-wrapper">
+                <div id="project-num" class="project-number">01</div>
+                <h1 id="tab-title">Key Message</h1>
+            </div>
+        </div>
+
+        <div id="key-message" class="tab-content active">
+            <div class="grid">
+                <div class="card card-full">
+                    <span class="card-title">🔥 Giải pháp quản trị và phân bổ thu nhập linh hoạt cho nhân sự</span>
+                    <p class="desc">Tối ưu phúc lợi tài chính nhân viên thông qua cơ chế phân bổ thu nhập linh hoạt</p>
+                    <div class="grid" style="margin-top: 20px; gap: 15px;">
+                        <div class="card">
+                            <strong style="color:var(--accent)">👉 CEO</strong>
+                            <p class="desc">"Giảm nghỉ việc 20% – tiết kiệm hàng tỷ mỗi năm"</p>
+                        </div>
+                        <div class="card">
+                            <strong style="color:var(--accent)">👉 HRD</strong>
+                            <p class="desc">"Giữ chân nhân sự mà không cần tăng lương"</p>
+                        </div>
+                        <div class="card">
+                            <strong style="color:var(--accent)">👉 Nhân sự</strong>
+                            <p class="desc">"Nhận 10–12 lần số tiền đóng mỗi tháng - Có tiền lớn ngay khi cần mà không phải vay ai"</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card card-full">
+                    <span class="card-title">🎯 Core Value Proposition</span>
+                    <table class="data-table">
+                        <tr><td style="width: 25%;"><strong>Nhân viên:</strong></td><td>Cần tiền gấp nhưng không muốn vay</td></tr>
+                        <tr><td><strong>Doanh nghiệp:</strong></td><td>Muốn giữ người nhưng không muốn tăng lương</td></tr>
+                        <tr><td><strong>Giải pháp:</strong></td><td>Tối ưu lại dòng tiền nội bộ</td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div id="goals" class="tab-content">
+            <div class="grid">
+                <div class="card card-large">
+                    <span class="card-title">Mục tiêu chính</span>
+                    <ul class="list-detail">
+                        <li>🚀 20 doanh nghiệp ký hợp đồng</li>
+                        <li>👥 5,000 – 10,000 nhân viên tham gia</li>
+                    </ul>
+                </div>
+                <div class="card card-large">
+                    <span class="card-title">Sale Funnel (6 Tháng)</span>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Giai đoạn</th><th style="text-align:right">Mục tiêu</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Gặp khách hàng</td><td style="text-align:right">150</td></tr>
+                            <tr><td>LOI (thư quan tâm)</td><td style="text-align:right">40</td></tr>
+                            <tr><td>Pilot (thử nghiệm)</td><td style="text-align:right">20</td></tr>
+                            <tr><td>Go-live (vận hành thật)</td><td style="text-align:right">20</td></tr>
+                            <tr><td><strong>Tỷ lệ tham gia</strong></td><td style="text-align:right"><strong>>35%</strong></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div id="strategy" class="tab-content">
+            <div class="grid">
+                <div class="card card-full">
+                    <span class="card-title">🎯 Công thức thành công: Niềm tin (CEO) → Tham gia (Nhân viên) → Mở rộng (HR)</span>
+                </div>
+                <div class="card">
+                    <span class="card-title">1. Top-down</span>
+                    <p class="desc">CEO ban hành chính sách → nhân viên tin tưởng</p>
+                </div>
+                <div class="card">
+                    <span class="card-title">2. Pilot trước</span>
+                    <p class="desc">Thử nhỏ → chứng minh hiệu quả → mở rộng</p>
+                </div>
+                <div class="card">
+                    <span class="card-title">3. WOW Moment</span>
+                    <p class="desc">Tháng đầu đóng góp 1 triệu, Lần nhận tiền đầu tiên nhận 12 triệu, không trừ thuế</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="target" class="tab-content">
+            <div class="grid">
+                <div class="card card-large">
+                    <span class="card-title">Phân khúc B2B chính</span>
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px;">
+                        <span class="tag">BPO & Contact Center</span>
+                        <span class="tag">Healthcare</span>
+                        <span class="tag">Education</span>
+                        <span class="tag">Bảo hiểm</span>
+                    </div>
+                </div>
+                <div class="card card-large">
+                    <span class="card-title">💥 Insight</span>
+                    <div class="plan-box">
+                        “Doanh nghiệp có lực lượng lao động lớn và áp lực ổn định nhân sự cao sẽ có nhu cầu mạnh nhất đối với Nền tảng hỗ trợ HR Retention”
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="execution" class="tab-content">
+            <div class="card card-full" style="margin-bottom: 25px;">
+                <span class="card-title" style="color: #2b6cb0;">GIAI ĐOẠN 1 (Tháng 1–2): THIẾT LẬP NỀN TẢNG</span>
+                <div class="grid">
+                    <div class="card" style="box-shadow: none; border: 1px solid #E2E8F0; grid-column: span 4;">
+                        <strong>🎯 Mục tiêu:</strong>
+                        <ul class="list-detail">
+                            <li>50 buổi gặp</li>
+                            <li>10 LOI</li>
+                        </ul>
+                    </div>
+                    <div class="card" style="box-shadow: none; border: 1px solid #E2E8F0; grid-column: span 8;">
+                        <table class="data-table">
+                            <tr>
+                                <td width="30%"><strong>BƯỚC 1: Danh sách</strong></td>
+                                <td>Lập 100 công ty mục tiêu. Đối tượng: HRD, CEO.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>BƯỚC 2: Kịch bản</strong></td>
+                                <td>
+                                    Nhấn mạnh chi phí nghỉ việc (Ví dụ: 1,000 NS, nghỉ 50% => Mất 5 tỷ/năm).<br>
+                                    <em>"Vrddi giúp tiết kiệm ~1 tỷ mà không cần tăng lương"</em>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>BƯỚC 3: Tài liệu</strong></td>
+                                <td>Chuẩn hóa NDA, LOI (Song ngữ), Hợp đồng, CAF (Excel), Chính sách EFW.</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+        <div id="growth" class="tab-content">
+            <div class="grid">
+                <div class="card card-full">
+                    <span class="card-title">🔁 Vòng lặp tăng trưởng</span>
+                    <div class="plan-box" style="text-align: center; font-weight: 600;">
+                        Nhân viên nhận tiền<br>→ Áp lực tài chính giảm<br>→ Chia sẻ đồng nghiệp<br> → Nhiều người tham gia<br> → Quỹ lớn hơn<br> → Giá trị cao hơn<br> → HR mở rộng<br> → Bán thêm khách hàng mới
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="pricing" class="tab-content">
+            <div class="grid">
+                <div class="card card-large">
+                    <span class="card-title">💰 Chiến lược giai đoạn đầu</span>
+                    <ul class="list-detail">
+                        <li>🎁 Miễn phí 2 tháng sử dụng</li>
+                    </ul>
+                </div>
+                <div class="card card-large">
+                    <span class="card-title">🎯 Triết lý</span>
+                    <div class="highlight-box">
+                        “Giảm rào cản → tăng tham gia → thu tiền sau”
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="risks" class="tab-content">
+            <div class="grid">
+                <div class="card card-full">
+                    <span class="card-title">⚠️ Rủi ro & Giải pháp ứng phó</span>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th width="30%">Vấn đề</th>
+                                <th>Giải pháp chi tiết</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>"Có phải hụi không?"</strong></td>
+                                <td>❌ Không dùng từ “hụi”. ✅ Dùng: “Chương trình an sinh tài chính nhân viên”.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Thiếu niềm tin</strong></td>
+                                <td>Hợp tác với ngân hàng và các thương hiệu lớn để bảo chứng.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>HR sợ phức tạp</strong></td>
+                                <td>Demo rõ: “Tự động 100% – không tăng workload”. Chỉ xét duyệt khi có đề xuất ứng sớm.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div id="success" class="tab-content">
+            <div class="grid">
+                <div class="card card-full">
+                    <span class="card-title">🔥 3 Yếu tố bắt buộc để thành công</span>
+                    <div class="grid">
+                        <div class="card">
+                            <span class="card-title">1. CEO đồng thuận</span>
+                            <p class="desc">Nếu không có sự đồng thuận từ cấp cao nhất = Thất bại.</p>
+                        </div>
+                        <div class="card">
+                            <span class="card-title">2. WOW Experience</span>
+                            <p class="desc">Trải nghiệm nhận tiền đầu tiên phải thực sự ấn tượng để tạo sự lan tỏa.</p>
+                        </div>
+                        <div class="card">
+                            <span class="card-title">3. Người dẫn dắt</span>
+                            <p class="desc">Cần có "Internal Champion" tại doanh nghiệp để thúc đẩy tỷ lệ tham gia.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="ads-tab" class="tab-content">
+            <div class="grid">
+                <div class="card card-full">
+                    <span class="card-title">🚀 Nhóm Hook 1 – Gây sốc (Performance Ads)</span>
+                    <div class="grid">
+                        <div class="card" style="box-shadow: none; border-color: #EDF2F7;">
+                            <span class="hook-label">Cho CEO</span>
+                            <p class="desc">“<span class="kw-highlight">Tăng thu nhập nhân viên</span> mà không tăng chi phí?”</p>
+                            <p class="desc">“<span class="kw-highlight">Giữ người</span> mà không cần tăng lương – làm được không?”</p>
+                            <p class="desc">👉 “Biến lương <span class="num-box">12 tháng</span> thành <span class="num-box">13 tháng</span> – không tăng ngân sách”</p>
+                        </div>
+                        <div class="card" style="box-shadow: none; border-color: #EDF2F7;">
+                            <span class="hook-label">Cho HRD</span>
+                            <p class="desc">“Nhân viên <span class="kw-highlight">hết tiền giữa tháng</span> – HR có giải pháp chưa?”</p>
+                            <p class="desc">“<span class="kw-highlight">Giữ nhân sự</span> mà không cần xin thêm budget?”</p>
+                            <p class="desc">“<span class="kw-highlight">Tạm ứng lương</span> đang làm HR mất bao nhiêu thời gian?”</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-full">
+                    <span class="card-title">💡 Nhóm Hook 2 – Value Proposition rõ ràng</span>
+                    <div class="grid">
+                        <div class="card" style="box-shadow: none; border-color: #EDF2F7;">
+                            <span class="hook-label">Cho CEO</span>
+                            <p class="desc">“<span class="kw-highlight">Phúc lợi tài chính</span> <span class="num-box">0%</span> lãi – không dùng vốn công ty”</p>
+                            <p class="desc">“<span class="kw-highlight">Không rủi ro tài chính</span> – vẫn tăng thu nhập nhân viên”</p>
+                            <p class="desc">“<span class="kw-highlight">Tối ưu chi trả lương</span>, không cần tăng lương”</p>
+                        </div>
+                        <div class="card" style="box-shadow: none; border-color: #EDF2F7;">
+                            <span class="hook-label">Cho HRD</span>
+                            <p class="desc">“<span class="kw-highlight">HR không cần duyệt</span> – nhân viên vẫn có tiền khi cần”</p>
+                            <p class="desc">“<span class="kw-highlight">Không thêm việc</span> – vẫn giải quyết bài toán tài chính nhân sự”</p>
+                            <p class="desc">“<span class="kw-highlight">Tạm ứng lương lỗi thời</span> rồi”</p>
+                        </div>
+                    </div>
+                    <div class="plan-box" style="margin-top: 20px;">
+                        Bạn <span class="kw-highlight">không cần tăng lương</span> để giữ người. Bạn chỉ cần <span class="kw-highlight">trả lương đúng cách</span>.
+                    </div>
+                </div>
+
+                <div class="card card-full">
+                    <span class="card-title">🧠 Nhóm Hook 3 – Insight-based (LinkedIn)</span>
+                    <div class="grid">
+                        <div class="card" style="box-shadow: none; border-color: #EDF2F7;">
+                            <span class="hook-label">Cho CEO</span>
+                            <p class="desc">“Nhân sự <span class="kw-highlight">nghỉ việc</span> không phải vì lương thấp – mà vì <span class="kw-highlight">thiếu tiền đúng lúc</span>”</p>
+                            <p class="desc">“Tăng lương không giải quyết được bài toán <span class="kw-highlight">dòng tiền</span>”</p>
+                        </div>
+                        <div class="card" style="box-shadow: none; border-color: #EDF2F7;">
+                            <span class="hook-label">Cho HRD</span>
+                            <p class="desc">“<span class="num-box">90%</span> <span class="kw-highlight">phúc lợi hiện tại</span> không giải quyết vấn đề lớn nhất: có tiền mặt ngay khi cần”</p>
+                            <p class="desc">“HR đang <span class="kw-highlight">giải thiếu bài toán tài chính</span> nhân sự”</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="linkedin-tab" class="tab-content">
+            <div class="grid">
+                <div class="card card-full">
+                    <span class="card-title">📝 Format 1 – Storytelling (High Engagement)</span>
+                    <div class="plan-box">
+                        <strong>Opening:</strong> “1 nhân viên nghỉ việc vì thiếu <span class="num-box">20 triệu</span>, không phải vì lương thấp.”<br><br>
+                        <strong>Body:</strong>
+                        <ul class="list-detail">
+                            <li>Vấn đề là <span class="kw-highlight">thiếu tiền ngắn hạn</span></li>
+                            <li>HR không có <span class="kw-highlight">công cụ phù hợp</span></li>
+                            <li>Doanh nghiệp đang <span class="kw-highlight">giải sai bài toán</span></li>
+                        </ul>
+                        <strong>Close:</strong> 👉 “Có cách <span class="kw-highlight">tăng thu nhập</span> mà không tăng chi phí”
+                    </div>
+                </div>
+
+                <div class="card card-large">
+                    <span class="card-title">🎯 Format 2 – Insight cho lãnh đạo</span>
+                    <p class="desc">👉 “<span class="num-box">3 điều</span> CEO đang hiểu thiếu về <span class="kw-highlight">phúc lợi tài chính</span>”</p>
+                    <ul class="list-detail">
+                        <li>Tăng lương ≠ giải quyết vấn đề</li>
+                        <li>Tạm ứng lương = giải pháp tạm thời</li>
+                        <li>Nhân sự cần tiền đúng lúc, không chỉ lương cao</li>
+                    </ul>
+                </div>
+
+                <div class="card card-large">
+                    <span class="card-title">📊 Format 3 – Case giả lập</span>
+                    <div class="highlight-box" style="text-align: center; padding: 40px 20px;">
+                        <span style="font-size: 1.1rem; font-weight: 700; color: var(--accent);">
+                            “<span class="num-box">12 nhân viên</span> → tạo quỹ → mỗi người nhận giá trị <span class="kw-highlight">gấp nhiều lần</span>”
+                        </span>
+                        <p class="desc" style="margin-top: 15px; font-style: italic;">(Yêu cầu sử dụng Visual minh họa dòng tiền luân chuyển)</p>
+                    </div>
+                </div>
+
+                <div class="card card-full" style="background: #f0fdf4; border: 2px solid var(--accent);">
+                    <span class="card-title">📝 APPLY FORM (Form đăng ký demo / pilot)</span>
+                    <div class="grid">
+                        <div class="card" style="box-column: span 6; box-shadow: none;">
+                            <strong>Title:</strong> 👉 “Đăng ký <span class="kw-highlight">sử dụng thử ngay</span> – không rủi ro”<br><br>
+                            <strong>Giới thiệu ngắn:</strong>
+                            <ul class="list-detail">
+                                <li>Triển khai trong <span class="num-box">2 tuần</span></li>
+                                <li>Không cần thay đổi hệ thống</li>
+                                <li>Không phát sinh chi phí cố định</li>
+                            </ul>
+                        </div>
+                        <div class="card" style="box-column: span 6; box-shadow: none;">
+                            <strong>Các trường thông tin:</strong>
+                            <ul class="list-detail">
+                                <li>Quy mô nhân sự</li>
+                                <li>Ngành</li>
+                                <li>Vấn đề chính: <span class="tag">Giữ người</span> <span class="tag">Nhân viên thiếu tiền</span> <span class="tag">HR quá tải</span></li>
+                            </ul>
+                            <div class="plan-box" style="background: var(--accent); color: white; text-align: center; border: none;">
+                                👉 “Nhận đề xuất phù hợp trong <span class="num-box" style="border-color: white;">24h</span>”
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        function showTab(event, tabId, num) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+            
+            const btnText = event.currentTarget.innerText.split('.')[1] || event.currentTarget.innerText;
+            document.getElementById('tab-title').innerText = btnText.replace('●', '').trim();
+            document.getElementById('project-num').innerText = num;
+            
+            document.querySelector('.main').scrollTop = 0;
+        }
+    </script>
+</body>
+</html>

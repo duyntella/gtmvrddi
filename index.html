@@ -1,264 +1,745 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Vrddi Vietnam GTM</title>
+<title>Vrddi | Pitchdeck Online</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Manrope:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
 <style>
 :root{
-  --bg:#f5f9fd;
-  --paper:#ffffff;
-  --paper-soft:#f8fbff;
-  --ink:#102033;
-  --muted:#64748b;
-  --line:#dbe7f3;
-  --accent:#0068B3;
-  --accent-bright:#009FE3;
-  --accent-deep:#004B93;
-  --accent-soft:#e8f5ff;
-  --accent-soft-2:#f0f8ff;
-  --amber:#b7791f;
-  --amber-soft:#fff7e8;
-  --rose:#b42318;
-  --rose-soft:#fff1f0;
-  --green:#04876d;
-  --green-soft:#ecfdf5;
-  --shadow:0 18px 48px rgba(16,48,82,.08);
-  --shadow-soft:0 10px 26px rgba(16,48,82,.055);
-  --radius:24px;
-  --sidebar:318px;
-  --topbar:68px;
+  --blue:#1557C0;
+  --blue-deep:#0B347B;
+  --gold:#F6AA1C;
+  --ink:#0F172A;
+  --muted:#64748B;
+  --paper:#F7FAFF;
+  --line:#E2EAF5;
+  --green:#059669;
 }
-*{box-sizing:border-box;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-html{scroll-behavior:smooth}
-body{
-  margin:0;
-  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  color:var(--ink);
-  background:
-    radial-gradient(circle at 12% -10%, rgba(0,104,179,.12), transparent 32%),
-    radial-gradient(circle at 92% 4%, rgba(0,159,227,.13), transparent 26%),
-    linear-gradient(135deg,#fbfdff 0%,#f2f8fe 48%,#f7fafc 100%);
-  min-height:100vh;
-  overflow-x:hidden;
+*{box-sizing:border-box;scroll-behavior:smooth}
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(180deg,#fff 0%,#f6f9ff 46%,#fff 100%);color:var(--ink)}
+a{color:inherit;text-decoration:none}
+::selection{background:rgba(246,170,28,.28)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(255,255,255,.88);backdrop-filter:blur(18px);border-bottom:1px solid rgba(15,23,42,.08)}
+.logo-mark{width:40px;height:40px;border-radius:14px;background:linear-gradient(135deg,var(--gold) 0 43%,var(--blue) 44%);box-shadow:0 12px 28px rgba(21,87,192,.14);flex:0 0 auto}
+.btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,var(--blue-deep),var(--blue));color:white;box-shadow:0 14px 30px rgba(21,87,192,.2);transition:.22s ease}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 38px rgba(21,87,192,.26)}
+.btn-soft{display:inline-flex;align-items:center;justify-content:center;background:#fff;border:1px solid var(--line);box-shadow:0 10px 26px rgba(15,23,42,.055);transition:.22s ease}.btn-soft:hover{transform:translateY(-2px);border-color:#cbd9ee}
+.hero{position:relative;min-height:92vh;padding-top:98px;overflow:hidden;background:radial-gradient(circle at 12% 7%,rgba(246,170,28,.15),transparent 27%),radial-gradient(circle at 88% 10%,rgba(21,87,192,.14),transparent 30%),linear-gradient(180deg,#fff 0%,#f5f8ff 100%)}
+.grid-bg{background-image:linear-gradient(rgba(21,87,192,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(21,87,192,.055) 1px,transparent 1px);background-size:54px 54px}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;padding:8px 13px;border:1px solid rgba(21,87,192,.14);background:#fff;border-radius:999px;color:var(--blue-deep);font-weight:800;font-size:12px;letter-spacing:.01em;box-shadow:0 10px 30px rgba(15,23,42,.045)}
+.title-xl{font-weight:900;letter-spacing:-.045em;line-height:1.03;font-size:clamp(36px,5.4vw,66px)}
+.title-lg{font-weight:900;letter-spacing:-.035em;line-height:1.08;font-size:clamp(28px,4.2vw,48px)}
+.lead{font-size:clamp(17px,1.65vw,22px);line-height:1.65;color:#475569}
+.text-body{font-size:17px;line-height:1.65;color:#475569}.text-small{font-size:14px;line-height:1.55;color:#64748B}
+.gradient-text{background:linear-gradient(90deg,var(--blue-deep),var(--blue),#1689CE);-webkit-background-clip:text;background-clip:text;color:transparent}.gold-text{color:var(--gold)}
+.card{background:rgba(255,255,255,.9);border:1px solid rgba(226,232,240,.95);box-shadow:0 18px 55px rgba(15,23,42,.06);border-radius:28px}.card-strong{background:#fff;border:1px solid var(--line);box-shadow:0 24px 68px rgba(15,23,42,.08);border-radius:32px}.metric{font-size:clamp(30px,3.7vw,46px);font-weight:900;letter-spacing:-.035em;line-height:1}.section{padding:88px 0}.pill{border-radius:999px;padding:7px 11px;font-weight:800;font-size:12px;white-space:nowrap}.pill-blue{background:#EAF2FF;color:var(--blue-deep)}.pill-green{background:#E9F8F1;color:#047857}.pill-gold{background:#FFF5DA;color:#B77900}.pill-red{background:#FFF1F2;color:#BE123C}
+.fade{opacity:0;transform:translateY(20px);transition:all .65s cubic-bezier(.2,.8,.2,1)}.fade.show{opacity:1;transform:translateY(0)}
+.problem-card{transition:.22s ease}.problem-card:hover{transform:translateY(-5px);box-shadow:0 24px 58px rgba(15,23,42,.09)}
+.step-num{width:44px;height:44px;min-width:44px;border-radius:16px;background:linear-gradient(135deg,var(--blue),#1D7FF2);color:white;display:flex;align-items:center;justify-content:center;font-weight:900;box-shadow:0 12px 24px rgba(21,87,192,.18)}
+.compare{overflow:hidden}.compare-row{display:grid;grid-template-columns:1.25fr .9fr .9fr;border-bottom:1px solid var(--line)}.compare-row:last-child{border-bottom:0}.compare-row>div{padding:16px 18px}.compare-head{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:900;background:#F8FBFF}.check{color:#059669;font-weight:900}.cross{color:#E11D48;font-weight:900}
+.range{appearance:none;width:100%;height:7px;border-radius:999px;background:#D9E5F4;outline:none}.range::-webkit-slider-thumb{appearance:none;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--blue),#1D7FF2);box-shadow:0 8px 18px rgba(21,87,192,.28);cursor:pointer}.range::-moz-range-thumb{width:22px;height:22px;border:0;border-radius:50%;background:var(--blue);cursor:pointer}.input-card{background:#F8FBFF;border:1px solid var(--line);border-radius:20px;padding:18px}.result-card{background:linear-gradient(135deg,#0B347B,#1557C0 62%,#1D7FF2);color:white;border-radius:30px;box-shadow:0 24px 62px rgba(21,87,192,.24)}
+.mini-chart{height:9px;background:#E7EEF8;border-radius:999px;overflow:hidden}.mini-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--gold),var(--blue));transition:width .35s ease}.usecase{background:#fff;border:1px solid var(--line);border-radius:24px;padding:22px;min-height:162px;transition:.22s ease}.usecase:hover{transform:translateY(-4px);box-shadow:0 18px 48px rgba(15,23,42,.07)}
+.orbit{position:relative;aspect-ratio:1;border-radius:999px;background:radial-gradient(circle,#fff 0 32%,#EAF2FF 33% 52%,#fff 53%);border:1px solid var(--line);box-shadow:inset 0 0 0 15px rgba(21,87,192,.025),0 24px 62px rgba(15,23,42,.075)}.orbit-dot{position:absolute;width:72px;height:72px;border-radius:23px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;text-align:center;font-weight:900;font-size:11px;box-shadow:0 16px 32px rgba(15,23,42,.08);padding:6px}.dot-1{top:5%;left:50%;transform:translateX(-50%)}.dot-2{top:27%;right:2%}.dot-3{bottom:15%;right:10%}.dot-4{bottom:15%;left:10%}.dot-5{top:27%;left:2%}.orbit-center{position:absolute;inset:36%;border-radius:28px;background:linear-gradient(135deg,var(--blue),#1D7FF2);color:white;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:900;box-shadow:0 16px 34px rgba(21,87,192,.24);padding:8px}
+.mobile-nav-btn{display:none}
+
+.compare-enhanced{background:linear-gradient(180deg,#fff 0%,#f8fbff 100%)}
+.compare-top-cell{border-radius:18px;padding:14px 16px;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.06em;text-align:center}.compare-top-cell.muted{background:#F1F5F9;color:#64748B}.compare-top-cell.old{background:#FFF1F2;color:#BE123C}.compare-top-cell.vrddi{background:#E9F8F1;color:#047857}
+.compare-list{display:flex;flex-direction:column;gap:12px}.compare-item{display:grid;grid-template-columns:1.05fr 1fr 1.18fr;gap:12px;align-items:stretch}.compare-item>div{border-radius:18px;padding:16px 18px;font-weight:750;line-height:1.45}.compare-criterion{background:#F8FAFC;color:#0F172A;border:1px solid #E2EAF5}.compare-old{background:#FFF7F7;color:#9F1239;border:1px solid #FFE4E6}.compare-vrddi{background:linear-gradient(135deg,#ECFDF5,#EFF6FF);color:#065F46;border:1px solid #BBF7D0;box-shadow:0 10px 26px rgba(5,150,105,.07)}
+.compare-vrddi:before{content:'✓ ';font-weight:900;color:#059669}.compare-old:before{content:'× ';font-weight:900;color:#E11D48}.currency-toggle{display:flex;gap:8px;background:#F1F5F9;border:1px solid var(--line);padding:5px;border-radius:999px}.currency-toggle button{border:0;background:transparent;border-radius:999px;padding:7px 12px;font-weight:900;font-size:12px;color:#64748B;cursor:pointer}.currency-toggle button.active{background:#fff;color:var(--blue-deep);box-shadow:0 6px 18px rgba(15,23,42,.08)}
+@media(max-width:1024px){.compare-top{display:none!important}.compare-item{grid-template-columns:1fr}.compare-item>div{padding:14px 15px}.compare-criterion{font-size:17px}.compare-old:before{content:'Tạm ứng / Vay: ';font-size:11px;text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:5px}.compare-vrddi:before{content:'✓ Vrddi: ';font-size:11px;text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:5px}.nav-links{display:flex;overflow-x:auto;gap:16px;max-width:calc(100vw - 170px);padding:4px 0;scrollbar-width:none}.nav-links::-webkit-scrollbar{display:none}}
+
+@media(max-width:1024px){.nav-links{display:none}.mobile-stack{grid-template-columns:1fr!important}.hide-tablet{display:none}.hero{min-height:auto;padding-top:86px}.section{padding:72px 0}.compare-row{grid-template-columns:1fr}.compare-row>div{border-bottom:1px solid var(--line)}.compare-row>div:last-child{border-bottom:0}.compare-head{display:none}.compare-row>div[data-label]:before{content:attr(data-label);display:block;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#94A3B8;font-weight:900;margin-bottom:5px}.mobile-nav-btn{display:inline-flex}}
+@media(max-width:640px){.nav-inner{padding:11px 15px!important}.logo-mark{width:36px;height:36px;border-radius:12px}.nav-cta{display:none}.hero{padding-top:76px}.hero-wrap{padding-top:46px!important;padding-bottom:54px!important}.title-xl{font-size:34px;letter-spacing:-.035em}.title-lg{font-size:27px;letter-spacing:-.028em}.lead{font-size:16px;line-height:1.58}.text-body{font-size:15.5px}.section{padding:58px 0}.card,.card-strong,.result-card{border-radius:22px}.metric{font-size:31px}.pill{font-size:11px;padding:6px 9px}.hero-cta{flex-direction:column}.btn-primary,.btn-soft{width:100%}.compare-row>div{padding:14px}.input-card{padding:16px;border-radius:18px}.orbit{max-width:330px;margin:0 auto}.orbit-dot{width:60px;height:60px;font-size:9.5px;border-radius:18px}.orbit-center{font-size:11px;border-radius:22px}.mobile-two{grid-template-columns:1fr!important}.usecase{min-height:auto}.result-number{font-size:35px!important;line-height:1.1}.hero-stats{grid-template-columns:1fr!important}.hero-card{padding:20px!important}}
+@media(max-width:1024px){.nav-links{display:flex!important;overflow-x:auto;gap:16px;max-width:calc(100vw - 170px);padding:4px 0;scrollbar-width:none}.nav-links::-webkit-scrollbar{display:none}}
+@media(max-width:640px){.nav-links{max-width:calc(100vw - 95px);font-size:12px}.nav-inner{gap:8px}.nav-inner>a:first-child>div:last-child{display:none}.currency-toggle{width:100%;justify-content:center}.flex:has(.currency-toggle){flex-direction:column;align-items:flex-start}}
+
+.lang-toggle{display:flex;gap:5px;background:#F1F5F9;border:1px solid var(--line);padding:4px;border-radius:999px;flex:0 0 auto}.lang-toggle button{border:0;background:transparent;border-radius:999px;padding:7px 10px;font-weight:900;font-size:12px;color:#64748B;cursor:pointer}.lang-toggle button.active{background:#fff;color:var(--blue-deep);box-shadow:0 6px 18px rgba(15,23,42,.08)}
+@media(min-width:1025px){
+  html{scroll-snap-type:y mandatory;scroll-padding-top:64px}.nav-inner{padding-top:10px!important;padding-bottom:10px!important}.nav-links{gap:20px!important}.nav-actions{gap:10px!important}.nav-cta{padding:10px 16px!important}.hero,.section{min-height:100vh;display:flex;align-items:center;scroll-snap-align:start;padding:64px 0 28px}.hero{padding-top:64px}.hero-wrap{padding-top:34px!important;padding-bottom:22px!important}.section>div{width:100%}.max-w-7xl{max-width:1180px!important}.max-w-6xl{max-width:1100px!important}.title-xl{font-size:clamp(34px,4.2vw,56px);line-height:1.02}.title-lg{font-size:clamp(25px,3.05vw,38px);line-height:1.06}.lead{font-size:clamp(14.5px,1.15vw,18px);line-height:1.45}.text-body{font-size:14.5px;line-height:1.48}.text-small{font-size:12.5px;line-height:1.42}.eyebrow{font-size:11px;padding:7px 11px}.metric{font-size:clamp(27px,3vw,38px)}.step-num{width:38px;height:38px;min-width:38px;border-radius:14px}.hero .gap-12,.section .gap-10,.section .gap-9,.section .gap-8{gap:1.45rem!important}.section .mb-14{margin-bottom:1.6rem!important}.section .mb-12{margin-bottom:1.45rem!important}.section .mb-10{margin-bottom:1.25rem!important}.section .mb-8{margin-bottom:1rem!important}.section .mb-7{margin-bottom:1rem!important}.section .mb-6{margin-bottom:.85rem!important}.section .mb-5{margin-bottom:.75rem!important}.hero .mb-10{margin-bottom:1.25rem!important}.hero .mb-8{margin-bottom:1.1rem!important}.hero .mb-7{margin-bottom:1rem!important}.hero .mb-6{margin-bottom:1rem!important}.card.p-7,.card.p-6,.card.p-5,.card-strong.p-7,.card-strong.p-6,.input-card,.usecase{padding:16px!important}.card-strong.lg\:p-10,.card-strong.lg\:p-8,.result-card.lg\:p-9{padding:20px!important}.result-card.p-7{padding:20px!important}.problem-card .text-4xl,.usecase .text-3xl{font-size:1.55rem!important;margin-bottom:.65rem!important}.problem-card h3,.usecase h3{font-size:1.08rem!important;margin-bottom:.45rem!important}.pill{font-size:11px;padding:6px 9px}.orbit{max-height:430px;max-width:430px;margin:0 auto}.orbit-dot{width:62px;height:62px;font-size:9.5px;border-radius:18px}.orbit-center{font-size:12px;border-radius:22px}.compare-item{gap:9px}.compare-item>div{padding:12px 14px;font-size:13.5px}.compare-top-cell{padding:11px 12px}.input-card{border-radius:16px}.input-card .mb-4{margin-bottom:.65rem!important}.space-y-5>:not([hidden])~:not([hidden]){margin-top:.8rem!important}.space-y-4>:not([hidden])~:not([hidden]){margin-top:.65rem!important}.grid.lg\:grid-cols-4{gap:1rem!important}.hero-stats{gap:.85rem!important}.hero-card{padding:15px!important}.mini-chart{height:7px}.usecase{min-height:134px}.result-number{font-size:clamp(28px,3.1vw,40px)!important}.nav .text-xs{max-width:360px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.currency-toggle button{padding:6px 10px}.section[id="demo"] .grid.lg\:grid-cols-5{gap:1.15rem!important}.section[id="proof"] .card-strong,.section[id="proof"] .card{padding:16px!important}.section[id="pilot"] .card-strong{padding:26px!important}
 }
-button{font-family:inherit}
-.topbar{
-  position:fixed;top:0;left:0;right:0;height:var(--topbar);z-index:80;
-  display:flex;align-items:center;justify-content:space-between;gap:16px;
-  padding:0 22px;background:rgba(255,255,255,.82);backdrop-filter:blur(18px);
-  border-bottom:1px solid rgba(0,104,179,.12);box-shadow:0 8px 24px rgba(16,48,82,.05)
+@media(max-width:640px){.nav-actions{gap:6px}.lang-toggle{padding:3px}.lang-toggle button{padding:6px 8px;font-size:11px}.nav-links{display:none!important}.nav-inner{justify-content:space-between}.nav-cta{display:none!important}.section{scroll-snap-align:none}}
+@media(max-width:1024px){html{scroll-snap-type:none}.nav-actions{margin-left:auto}.nav-links{display:none!important}}
+@media(max-width:1024px){html[lang="en"] .compare-old:before{content:'Advance / Loan: '!important}html[lang="en"] .compare-vrddi:before{content:'✓ Vrddi: '!important}}
+
+
+
+/* === Mobile refinement: keep menu visible + improve comparison cards === */
+@media(max-width:1024px){
+  .nav{max-height:none;}
+  .nav-inner{
+    flex-wrap:wrap;
+    align-items:center;
+    gap:10px!important;
+    padding:10px 14px 8px!important;
+  }
+  .nav-inner > a:first-child{
+    min-width:0;
+    flex:1 1 auto;
+  }
+  .nav-actions{
+    flex:0 0 auto;
+    margin-left:0!important;
+  }
+  .nav-links{
+    order:3;
+    display:flex!important;
+    width:100%;
+    max-width:100%!important;
+    overflow-x:auto;
+    overflow-y:hidden;
+    gap:8px!important;
+    padding:7px 1px 3px!important;
+    margin-top:2px;
+    white-space:nowrap;
+    scroll-snap-type:x proximity;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .nav-links::-webkit-scrollbar{display:none;}
+  .nav-links a{
+    flex:0 0 auto;
+    scroll-snap-align:start;
+    padding:8px 12px;
+    border-radius:999px;
+    background:#F8FBFF;
+    border:1px solid var(--line);
+    color:#334155;
+    box-shadow:0 4px 14px rgba(15,23,42,.035);
+  }
+  .nav-links a:hover{background:#EAF2FF;color:var(--blue-deep);}
+  .hero{padding-top:122px!important;}
 }
-.brand-inline{display:flex;align-items:center;gap:12px;min-width:0}
-.brand-mark{width:38px;height:38px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent-bright));display:grid;place-items:center;color:white;font-weight:900;font-size:20px;box-shadow:0 12px 26px rgba(0,104,179,.22);flex:0 0 38px}
-.brand-copy{display:flex;flex-direction:column;min-width:0}
-.brand-title{font-family:Manrope,sans-serif;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-deep);font-size:14px;white-space:nowrap}
-.brand-sub{font-size:12px;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.lang-toggle{display:flex;background:#edf6ff;border:1px solid rgba(0,104,179,.13);border-radius:999px;padding:4px;gap:3px;flex:0 0 auto}
-.lang-toggle button{border:0;background:transparent;color:var(--muted);font-weight:850;font-size:11px;padding:7px 10px;border-radius:999px;cursor:pointer;transition:.22s ease}
-.lang-toggle button.active{background:white;color:var(--accent);box-shadow:0 4px 12px rgba(0,0,0,.06)}
-.mobile-menu{display:none;border:0;background:linear-gradient(135deg,var(--accent),var(--accent-bright));color:#fff;border-radius:14px;width:46px;height:46px;align-items:center;justify-content:center;box-shadow:0 12px 26px rgba(0,104,179,.24);cursor:pointer;flex:0 0 46px}
-.mobile-menu svg{width:24px;height:24px}
-.app{display:grid;grid-template-columns:var(--sidebar) minmax(0,1fr);min-height:100vh;padding-top:var(--topbar)}
-.sidebar{position:sticky;top:var(--topbar);height:calc(100vh - var(--topbar));background:rgba(255,255,255,.75);backdrop-filter:blur(18px);border-right:1px solid var(--line);padding:22px 18px;display:flex;flex-direction:column;z-index:50;box-shadow:10px 0 30px rgba(16,48,82,.035)}
-.nav-head{display:flex;align-items:center;justify-content:space-between;margin:0 6px 12px;color:var(--muted);font-size:11px;font-weight:850;letter-spacing:.16em;text-transform:uppercase}
-.nav{overflow:auto;padding-right:4px;display:flex;flex-direction:column;gap:6px}
-.nav button{border:1px solid transparent;background:transparent;color:#516174;border-radius:16px;padding:12px 13px;text-align:left;cursor:pointer;display:flex;align-items:center;gap:12px;font-weight:750;font-size:13px;line-height:1.25;transition:.22s ease;min-height:48px}
-.nav button:hover{background:#f2f8fe;color:var(--ink);transform:translateX(2px)}
-.nav button.active{background:linear-gradient(135deg,#e8f5ff,#ffffff);border-color:#cbe7fb;color:var(--accent-deep);box-shadow:0 8px 22px rgba(0,104,179,.08)}
-.nav-num{width:28px;height:28px;display:grid;place-items:center;border-radius:10px;background:#eef6fd;color:var(--accent);font-size:11px;font-weight:900;flex:0 0 28px}
-.nav button.active .nav-num{background:var(--accent);color:#fff}
-.main{min-width:0;padding:28px 42px 54px;overflow:hidden}
-.page-head{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:22px;padding:16px 0 4px}
-.title-wrap{display:flex;align-items:center;gap:15px;min-width:0}
-.big-num{font-family:Manrope,sans-serif;font-weight:900;color:transparent;-webkit-text-stroke:1.2px rgba(0,104,179,.20);font-size:54px;line-height:.9;letter-spacing:-.04em;flex:0 0 auto}
-h1{font-family:Manrope,sans-serif;font-size:clamp(25px,3vw,36px);letter-spacing:-.035em;line-height:1.12;margin:0;color:#13263b}
-.section-sub{font-size:14px;color:var(--muted);max-width:680px;line-height:1.6;margin:8px 0 0}
-.content{display:none}.content.active{display:block;animation:fade .24s ease both}@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:18px;max-width:1400px;width:100%}
-.card{background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow-soft);transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;min-width:0;height:fit-content}
-.card:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:rgba(0,104,179,.24)}
-.span-12{grid-column:span 12}.span-8{grid-column:span 8}.span-7{grid-column:span 7}.span-6{grid-column:span 6}.span-5{grid-column:span 5}.span-4{grid-column:span 4}.span-3{grid-column:span 3}
-.card-title{font-family:Manrope,sans-serif;font-size:13px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;color:var(--accent);margin:0 0 14px;display:flex;align-items:center;gap:9px}
-.body,.desc{font-size:14.5px;line-height:1.68;color:#4d5f72;margin:0 0 12px;word-wrap:break-word}.desc:last-child,.body:last-child{margin-bottom:0}
-.lead{font-size:17px;line-height:1.58;color:#33465a;margin:0}.quote{font-family:Manrope,sans-serif;font-size:20px;line-height:1.34;letter-spacing:-.018em;font-weight:850;margin:0;color:#122337}.quote.small{font-size:17px;font-weight:800}
-.metric{font-family:Manrope,sans-serif;font-size:36px;line-height:1;font-weight:900;letter-spacing:-.04em;color:var(--accent);margin:8px 0 6px}.metric small{font-size:14px;color:var(--muted);letter-spacing:0;font-weight:700}.accent{color:var(--accent);font-weight:850}.muted{color:var(--muted)}
-.soft-blue{background:linear-gradient(135deg,var(--accent-soft),#fff);border-color:#cbe7fb}.soft-light{background:linear-gradient(135deg,#f2f9ff,#fff);border-color:#d4eafd}.soft-amber{background:linear-gradient(135deg,var(--amber-soft),#fff);border-color:#f2dfb6}.soft-green{background:linear-gradient(135deg,var(--green-soft),#fff);border-color:#cdebd9}.dark-card{background:linear-gradient(135deg,var(--accent-deep),var(--accent));color:#fff;border:0}.dark-card .card-title,.dark-card .body,.dark-card .desc,.dark-card .quote,.dark-card .lead{color:#fff}.dark-card .muted{color:rgba(255,255,255,.82)}
-.list{display:grid;gap:10px;margin:0;padding:0;list-style:none}.list li{display:flex;gap:10px;align-items:flex-start;color:#475a6e;font-size:14.5px;line-height:1.55}.check{width:22px;height:22px;flex:0 0 22px;border-radius:8px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-size:13px;font-weight:900;margin-top:1px}
-ul.list-detail{padding-left:18px;margin:8px 0 0;color:#4d5f72;font-size:14.5px;line-height:1.68}ul.list-detail li{margin-bottom:7px}.plan-box{background:#f8fbff;padding:18px;border-radius:18px;margin-top:10px;border-left:5px solid var(--accent);font-size:14.5px;line-height:1.65;color:#4d5f72}.highlight-box{background:var(--accent-soft);padding:15px;border-radius:14px;border:1px dashed rgba(0,104,179,.55);margin:10px 0;color:#2e485f}.tag{display:inline-flex;padding:7px 11px;background:#f2f7fb;border:1px solid var(--line);border-radius:999px;font-size:12.5px;font-weight:800;color:#3f5265;margin-right:5px;margin-bottom:6px}.tag.blue{background:var(--accent-soft);color:var(--accent-deep);border-color:#cbe7fb}.kw-highlight{background:linear-gradient(to bottom,transparent 65%,rgba(0,104,179,.14) 65%);display:inline;padding:0 1px}.num-box{display:inline-block;padding:2px 8px;background:white;border:1.3px solid var(--accent);border-radius:8px;font-weight:800;color:var(--accent);margin:0 2px}.hook-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px;display:block;font-weight:850}
-table{width:100%;border-collapse:separate;border-spacing:0;overflow:hidden;border:1px solid var(--line);border-radius:18px;background:#fff;table-layout:auto}th,td{padding:13px 14px;text-align:left;border-bottom:1px solid var(--line);font-size:14px;line-height:1.5;vertical-align:top;color:#3e5165}th{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);background:#f7fbff;font-weight:900}tr:last-child td{border-bottom:0}td strong{color:#13263b}.right{text-align:right!important}.table-wrap{width:100%;overflow-x:auto;border-radius:18px}
-.funnel{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}.funnel-card{padding:16px 14px;border-radius:20px;background:white;border:1px solid var(--line);text-align:center;min-width:0}.funnel-card strong{display:block;font-family:Manrope,sans-serif;font-size:28px;color:var(--accent);line-height:1}.funnel-card span{display:block;font-size:12.5px;color:var(--muted);margin-top:7px;line-height:1.35}
-.loop{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.loop-item{position:relative;padding:17px 15px;border-radius:20px;background:white;border:1px solid var(--line);min-height:102px}.loop-item b{display:block;color:var(--accent);font-family:Manrope,sans-serif;margin-bottom:7px}.loop-item p{margin:0;color:#516174;font-size:13.5px;line-height:1.48}.loop-item:not(:last-child):after{content:"→";position:absolute;right:-13px;top:41%;font-weight:900;color:var(--accent);background:var(--bg);border-radius:99px;padding:2px 6px}.hook-card{background:white;border:1px solid var(--line);border-radius:20px;padding:17px}.hook-card .desc{font-size:14.5px}.hook-card .quote{font-size:17px}.ads-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.ads-section{display:grid;gap:14px}.ads-section .card-title{margin-bottom:2px}.compact-title{font-size:12.5px;letter-spacing:.04em}
-.arch{display:grid;gap:14px}.arch-section{border:1px solid var(--line);border-radius:22px;overflow:hidden;background:white}.arch-head{padding:17px 19px;font-weight:900;font-family:Manrope,sans-serif;letter-spacing:-.01em}.arch-head.blue{background:var(--accent-soft);color:var(--accent-deep)}.arch-head.green{background:#eefbf6;color:var(--green)}.arch-head.amber{background:var(--amber-soft);color:var(--amber)}.arch-grid{display:grid;grid-template-columns:2fr .8fr .8fr 2.2fr}.arch-cell{padding:13px 15px;border-top:1px solid var(--line);border-right:1px solid var(--line);font-size:13.5px;color:#425568;line-height:1.48}.arch-cell:nth-child(4n){border-right:0}.arch-grid.header .arch-cell{background:#f8fbff;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em;font-weight:900}.badge{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:5px 10px;font-size:12px;font-weight:900}.yes{background:var(--accent-soft);color:var(--accent)}.no{background:#f0f4f8;color:#7a8896}.overlay{display:none}
-@media(max-width:1120px){.app{grid-template-columns:1fr}.mobile-menu{display:flex}.sidebar{position:fixed;left:0;top:var(--topbar);bottom:0;transform:translateX(-104%);width:min(88vw,340px);height:calc(100dvh - var(--topbar));transition:transform .28s ease;box-shadow:24px 0 80px rgba(0,0,0,.16)}.sidebar.open{transform:translateX(0)}.overlay{display:none;position:fixed;inset:var(--topbar) 0 0;background:rgba(8,28,45,.36);backdrop-filter:blur(2px);z-index:40}.overlay.open{display:block}.main{padding:18px 18px 44px}.page-head{margin-bottom:16px}.big-num{font-size:44px}.span-8,.span-7,.span-6,.span-5,.span-4,.span-3{grid-column:span 12}.funnel{grid-template-columns:repeat(2,1fr)}.loop{grid-template-columns:repeat(2,1fr)}.loop-item:not(:last-child):after{display:none}.arch-grid{grid-template-columns:1fr}.arch-grid.header{display:none}.arch-cell{border-right:0}.arch-cell:before{content:attr(data-label);display:block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:900;margin-bottom:4px}.ads-grid{grid-template-columns:1fr}.topbar{padding:0 14px}.desktop-lang{display:none}}
-@media(max-width:640px){:root{--topbar:64px}.topbar{gap:9px}.brand-mark{width:36px;height:36px;border-radius:13px}.brand-title{font-size:12.5px}.brand-sub{display:none}.main{padding:14px 12px 34px}.grid{gap:12px}.card{padding:17px;border-radius:20px}.quote{font-size:18px}.quote.small{font-size:16px}.lead{font-size:15.5px}.metric{font-size:31px}.funnel,.loop{grid-template-columns:1fr}table,thead,tbody,tr,th,td{display:block;width:100%}thead{display:none}tr{border-bottom:1px solid var(--line);padding:8px 0}tr:last-child{border-bottom:0}td{border:0;padding:8px 14px}.right{text-align:left!important}td:before{content:attr(data-label);display:block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:900;margin-bottom:3px}.title-wrap{gap:10px}.big-num{font-size:38px}.mobile-menu{width:44px;height:44px}.lang-toggle button{padding:7px 9px}.arch-head{font-size:14px}.nav button{font-size:12.5px}}
+
+@media(max-width:640px){
+  .nav-inner{padding:9px 12px 7px!important;}
+  .nav-inner>a:first-child>div:last-child{display:block!important;}
+  .nav-inner .text-xs{display:none;}
+  .nav-actions{gap:6px!important;}
+  .nav-links{
+    display:flex!important;
+    font-size:12px!important;
+    gap:7px!important;
+    padding-top:6px!important;
+  }
+  .nav-links a{padding:7px 10px;}
+  .hero{padding-top:118px!important;}
+}
+
+@media(max-width:1024px){
+  .compare-enhanced{padding:14px!important;}
+  .compare-list{gap:14px;}
+  .compare-item{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    grid-template-areas:
+      "criterion criterion"
+      "old vrddi";
+    gap:9px;
+    padding:12px;
+    border:1px solid var(--line);
+    border-radius:22px;
+    background:#fff;
+    box-shadow:0 12px 32px rgba(15,23,42,.055);
+  }
+  .compare-criterion{grid-area:criterion;font-size:15.5px;font-weight:900;background:#F8FAFC;}
+  .compare-old{grid-area:old;}
+  .compare-vrddi{grid-area:vrddi;}
+  .compare-item>div{padding:13px 12px;border-radius:16px;font-size:13px;line-height:1.45;}
+  .compare-old:before,
+  .compare-vrddi:before{
+    display:flex!important;
+    align-items:center;
+    gap:4px;
+    min-height:22px;
+    margin-bottom:7px!important;
+    font-size:10px!important;
+    line-height:1.15;
+    letter-spacing:.04em;
+    opacity:.9;
+  }
+  .compare-old:before{content:'Tạm ứng / Vay'!important;color:#BE123C;}
+  .compare-vrddi:before{content:'✓ Vrddi'!important;color:#047857;}
+  html[lang="en"] .compare-old:before{content:'Advance / Loan'!important;}
+  html[lang="en"] .compare-vrddi:before{content:'✓ Vrddi'!important;}
+}
+
+@media(max-width:390px){
+  .compare-item{gap:7px;padding:9px;border-radius:19px;}
+  .compare-item>div{padding:11px 9px;font-size:12.2px;border-radius:14px;}
+  .compare-criterion{font-size:14px!important;}
+}
+
 </style>
 </head>
 <body>
-<div class="topbar">
-  <div class="brand-inline">
-    <button class="mobile-menu" id="menuBtn" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-    <div class="brand-mark">V</div>
-    <div class="brand-copy"><div class="brand-title">Vrddi Vietnam</div><div class="brand-sub" id="brandSub">Go To Market Plan | GTM 2026</div></div>
+<nav class="nav">
+  <div class="nav-inner max-w-7xl mx-auto px-6 py-4 flex items-center justify-between gap-4">
+    <a href="#top" class="flex items-center gap-3 text-slate-900">
+      <div class="logo-mark"></div>
+      <div><div class="font-black text-lg tracking-tight">Vrddi</div><div class="text-xs font-semibold text-slate-500">Phúc lợi Sức khỏe Tài chính nhân sự</div></div>
+    </a>
+    <div class="nav-links flex items-center gap-7 text-sm font-bold text-slate-600">
+      <a href="#pain" class="hover:text-blue-700">Nhân sự nghỉ việc</a>
+      <a href="#solution" class="hover:text-blue-700">Giải pháp</a>
+      <a href="#demo" class="hover:text-blue-700">Demo</a>
+      <a href="#proof" class="hover:text-blue-700">Minh chứng</a>
+      <a href="#pilot" class="hover:text-blue-700">Pilot</a>
+    </div>
+    <div class="nav-actions flex items-center gap-3">
+      <div class="lang-toggle" aria-label="Language switcher">
+        <button id="langVi" type="button" class="active" onclick="setLanguage('vi')">VI</button>
+        <button id="langEn" type="button" onclick="setLanguage('en')">EN</button>
+      </div>
+      <a href="#roi" class="nav-cta btn-primary px-5 py-3 rounded-full font-black text-sm">Tính ROI</a>
+    </div>
   </div>
-  <div class="lang-toggle" aria-label="Language switcher"><button id="top-en" class="active" type="button">EN</button><button id="top-vi" type="button">VI</button></div>
-</div>
-<div class="overlay" id="overlay"></div>
-<div class="app">
-  <aside class="sidebar" id="sidebar">
-    <div class="nav-head"><span id="menuLabel">Menu</span><div class="lang-toggle desktop-lang"><button id="side-en" class="active" type="button">EN</button><button id="side-vi" type="button">VI</button></div></div>
-    <nav class="nav" id="nav"></nav>
-  </aside>
-  <main class="main">
-    <section class="page-head">
-      <div class="title-wrap"><div class="big-num" id="pageNum">01</div><div><h1 id="pageTitle">Key Message</h1><p class="section-sub" id="pageSub"></p></div></div>
-    </section>
-    <section id="content" class="content active"></section>
-  </main>
-</div>
+</nav>
+
+<header id="top" class="hero grid-bg">
+  <div class="hero-wrap max-w-7xl mx-auto px-6 py-16 lg:py-24 relative z-10">
+    <div class="grid lg:grid-cols-2 gap-12 items-center mobile-stack">
+      <div class="fade">
+        <div class="eyebrow mb-6"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>Đã vận hành tại Ấn Độ, Bahrain, Qatar — Đang có mặt tại Việt Nam</div>
+        <h1 class="title-xl mb-6">Giữ người không cần tăng lương. <span class="gradient-text">Nhân viên có tiền khi cần</span> — không vay, không lãi.</h1>
+        <p class="lead max-w-2xl mb-8">Mỗi tháng nhân viên đóng một khoản nhỏ. Khi có việc gấp — viện phí, học phí, sửa nhà — họ nhận hỗ trợ lớn hơn <strong class="text-blue-800">10–12 lần</strong>, ngay trong kỳ lương. Doanh nghiệp không bỏ vốn. HR không tăng việc.</p>
+        <div class="hero-cta flex flex-wrap gap-4 mb-10">
+          <a href="#roi" class="btn-primary px-6 py-4 rounded-2xl font-black">Tính ROI cho doanh nghiệp của bạn <span>→</span></a>
+          <a href="#demo" class="btn-soft px-6 py-4 rounded-2xl font-black text-slate-800">Xem demo thực tế (2 phút)</a>
+        </div>
+        <div class="hero-stats grid grid-cols-3 gap-4 max-w-2xl">
+          <div class="card hero-card p-5"><div class="metric gradient-text">0%</div><div class="text-small font-bold mt-2">lãi — nhân viên nhận, không phải vay</div></div>
+          <div class="card hero-card p-5"><div class="metric gradient-text">99%</div><div class="text-small font-bold mt-2">tự động — HR không cần xử lý thủ công</div></div>
+          <div class="card hero-card p-5"><div class="metric gradient-text">0đ</div><div class="text-small font-bold mt-2">vốn doanh nghiệp bỏ ra</div></div>
+        </div>
+      </div>
+
+      <div class="fade">
+        <div class="card-strong p-6 lg:p-8">
+          <div class="flex items-start justify-between gap-5 mb-7">
+            <div><div class="text-small font-bold uppercase tracking-wider">Cách vận hành — 3 bước</div><h2 class="text-2xl lg:text-3xl font-black tracking-tight mt-2">3 bước từ đóng góp → nhận tiền — không qua ai duyệt.</h2></div>
+            <span class="pill pill-green">Live model</span>
+          </div>
+          <div class="space-y-4">
+            <div class="card p-5 flex gap-4 items-start"><div class="step-num">1</div><div><h3 class="font-black text-lg">Nhân viên có việc bất ngờ cần tiền</h3><p class="text-small mt-1">Viện phí đột xuất, học phí đầu năm, sửa nhà — những khoản không thể đợi đến 2 tháng lương tới.</p></div></div>
+            <div class="card p-5 flex gap-4 items-start"><div class="step-num">2</div><div><h3 class="font-black text-lg">Hệ thống xử lý thay HR</h3><p class="text-small mt-1">Hệ thống kiểm tra điều kiện và gợi ý quyết định — không cần HR xem từng hồ sơ.</p></div></div>
+            <div class="card p-5 flex gap-4 items-start"><div class="step-num">3</div><div><h3 class="font-black text-lg">Nhận 10–12x khoản đóng — ngay trong kỳ lương gần nhất</h3><p class="text-small mt-1">Nhân viên cảm nhận được doanh nghiệp quan tâm thật sự — không phải vay nợ, không áp lực trả.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="pain" class="section">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="max-w-4xl mb-12 fade">
+      <div class="eyebrow mb-5">01 · Nỗi đau thật</div>
+      <h2 class="title-lg">Nhân sự không nghỉ vì lương thấp — họ nghỉ vì <span class="gradient-text">thiếu tiền đúng lúc</span>.</h2>
+      <p class="lead mt-5">Khi thiếu tiền trước kỳ lương, nhân viên không báo HR. Họ âm thầm vay tín dụng đen, mượn đồng nghiệp — hoặc bắt đầu nhìn sang chỗ khác hoặc làm thêm nhiều việc. Doanh nghiệp thường chỉ biết khi họ đã nộp đơn nghỉ.</p>
+    </div>
+    <div class="grid lg:grid-cols-3 gap-6 mobile-stack">
+      <div class="card p-7 problem-card fade"><div class="text-4xl mb-5">💸</div><h3 class="text-xl font-black mb-3">Với nhân viên</h3><p class="text-body">Một khoản chi 20–30 triệu có thể kéo nhân viên vào vòng xoay vay lãi, mất ngủ, giảm năng suất — và cuối cùng là nghỉ việc.</p><div class="pill pill-red inline-block mt-5">Áp lực tài chính</div></div>
+      <div class="card p-7 problem-card fade"><div class="text-4xl mb-5">🧾</div><h3 class="text-xl font-black mb-3">Với HR</h3><p class="text-body">Mỗi yêu cầu tạm ứng tốn HR 30–60 phút: tiếp nhận, xác minh, trình ký, theo dõi hoàn ứng. Với 500 nhân viên, chỉ cần 5% cần tạm ứng mỗi tháng là HR mất hàng chục giờ vô ích.</p><div class="pill pill-gold inline-block mt-5">HR quá tải không đáng</div></div>
+      <div class="card p-7 problem-card fade"><div class="text-4xl mb-5">📉</div><h3 class="text-xl font-black mb-3">Với CEO / CFO</h3><p class="text-body">1 nhân viên nghỉ việc tốn trung bình 6–12 triệu chi phí thay thế. Tăng lương 10% không giải quyết được bài toán “thiếu tiền tháng này”. Và tạm ứng lương thì đụng thẳng vào vốn lưu động.</p><div class="pill pill-blue inline-block mt-5">Tốn tiền nhưng không giữ được người</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="solution" class="section bg-white border-y border-slate-200/70">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center max-w-4xl mx-auto mb-14 fade">
+      <div class="eyebrow mb-5">02 · Giải pháp</div>
+      <h2 class="title-lg">Vrddi: nhân viên có tiền khi cần — <span class="gradient-text">doanh nghiệp không bỏ vốn, HR không thêm việc</span>.</h2>
+      <p class="lead mt-5">Nhân viên đóng góp nhỏ mỗi tháng vào một pool chung. Khi có nhu cầu hợp lệ, họ nhận khoản hỗ trợ lớn hơn 10–12 lần — không lãi, không vay, không duyệt thủ công. Doanh nghiệp không bỏ một đồng vốn.</p>
+    </div>
+    <div class="grid lg:grid-cols-2 gap-10 items-center mobile-stack">
+      <div class="fade">
+        <div class="orbit">
+          <div class="orbit-dot dot-1">Nhân viên<br>tham gia</div>
+          <div class="orbit-dot dot-2">Đóng góp<br>hằng tháng</div>
+          <div class="orbit-dot dot-3">Nhu cầu<br>thật</div>
+          <div class="orbit-dot dot-4">Xét duyệt<br>tự động</div>
+          <div class="orbit-dot dot-5">Nhận tiền<br>0% lãi</div>
+          <div class="orbit-center">Nền tảng<br>Vrddi</div>
+        </div>
+      </div>
+      <div class="space-y-4 fade">
+        <div class="card p-6 flex gap-4"><div class="step-num">01</div><div><h3 class="text-xl font-black mb-2">Nhân viên có tiền đúng lúc — không vay, không ngại ngần</h3><p class="text-body">Có điểm tựa tài chính ngay khi cần — không cần vay bên ngoài, không áp lực lãi suất, không cảm giác mang nợ.</p></div></div>
+        <div class="card p-6 flex gap-4"><div class="step-num">02</div><div><h3 class="text-xl font-black mb-2">HR không ôm thêm việc</h3><p class="text-body">99% yêu cầu được xử lý tự động. HR chỉ nhìn vào dashboard — không phải xử lý từng hồ sơ, không thêm quy trình.</p></div></div>
+        <div class="card p-6 flex gap-4"><div class="step-num">03</div><div><h3 class="text-xl font-black mb-2">Doanh nghiệp không bỏ một đồng vốn</h3><p class="text-body">Pool được tạo từ đóng góp của nhân viên — không từ ngân sách công ty. Không có nợ xấu, không rủi ro thu hồi, không ảnh hưởng dòng tiền doanh nghiệp.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-10 items-start mobile-stack">
+      <div class="fade">
+        <div class="eyebrow mb-5">03 · Điểm khác biệt</div>
+        <h2 class="title-lg mb-6">Khác tạm ứng lương. Khác vay tiêu dùng. Đây là phúc lợi giữ chân nhân sự thật sự.</h2>
+        <p class="lead">Tạm ứng lương giải quyết 1 người, 1 lần. Vrddi tạo phúc lợi cho cả lực lượng — nhân viên thấy giá trị ngay, HR giảm tải ngay, doanh nghiệp không bỏ vốn.</p>
+      </div>
+      <div class="card-strong compare-enhanced fade p-4 lg:p-6">
+        <div class="compare-top grid grid-cols-3 gap-3 mb-4">
+          <div class="compare-top-cell muted">Tiêu chí</div>
+          <div class="compare-top-cell old">Tạm ứng / Vay</div>
+          <div class="compare-top-cell vrddi">✨ Vrddi</div>
+        </div>
+        <div class="compare-list">
+          <div class="compare-item"><div class="compare-criterion">Trải nghiệm nhân viên</div><div class="compare-old">Chậm, giấy tờ, dễ ngại hỏi</div><div class="compare-vrddi">Nhanh, tự động, không ngại xin — nhận trong tuần</div></div>
+          <div class="compare-item"><div class="compare-criterion">Nguồn chi trả</div><div class="compare-old">Vốn công ty hoặc khoản vay</div><div class="compare-vrddi">Pool từ đóng góp nhân viên — doanh nghiệp không bỏ vốn</div></div>
+          <div class="compare-item"><div class="compare-criterion">Workload HR</div><div class="compare-old">Tăng thêm mỗi lần có yêu cầu</div><div class="compare-vrddi">Giảm 99% — HR chỉ theo dõi dashboard, không xử lý hồ sơ</div></div>
+          <div class="compare-item"><div class="compare-criterion">Phạm vi áp dụng</div><div class="compare-old">Thường hạn chế theo chính sách</div><div class="compare-vrddi">Mở rộng toàn lực lượng, cấu hình linh hoạt theo nhóm</div></div>
+          <div class="compare-item"><div class="compare-criterion">Cảm nhận của nhân viên</div><div class="compare-old">Là nợ hoặc ứng trước — áp lực trả</div><div class="compare-vrddi">Là phúc lợi thật — nhân viên nhớ, gắn bó, ít nghỉ việc hơn</div></div>
+          <div class="compare-item"><div class="compare-criterion">Rủi ro tài chính doanh nghiệp</div><div class="compare-old">Nợ xấu, thu hồi khó, ảnh hưởng dòng tiền</div><div class="compare-vrddi">Không có — pool từ nhân viên, doanh nghiệp không liên đới</div></div>
+          <div class="compare-item"><div class="compare-criterion">Chi phí ẩn</div><div class="compare-old">Thời gian HR, giấy tờ, rủi ro quản trị</div><div class="compare-vrddi">Gần như bằng 0 — 99% tự động hóa</div></div>
+          <div class="compare-item"><div class="compare-criterion">Tác động retention</div><div class="compare-old">Mờ — không đo được</div><div class="compare-vrddi">Rõ — dashboard theo dõi tỷ lệ tham gia và sự gắn bó</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="roi" class="section bg-white border-y border-slate-200/70">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center max-w-4xl mx-auto mb-12 fade">
+      <div class="eyebrow mb-5">04 · ROI cho doanh nghiệp</div>
+      <h2 class="title-lg">Tính nhanh khoản tiết kiệm khi giảm nghỉ việc.</h2>
+      <p class="lead mt-5">ROI tiết kiệm được mô phỏng từ số lượng nhân sự áp dụng, lương trung bình và mức giảm tỷ lệ nghỉ việc sau khi triển khai Vrddi. Mỗi nhân sự nghỉ việc được quy đổi bằng 2 tháng lương do thời gian trống vị trí và chi phí tuyển thay thế.</p>
+    </div>
+    <div class="grid lg:grid-cols-5 gap-8 mobile-stack">
+      <div class="lg:col-span-2 card-strong p-6 lg:p-8 fade">
+        <h3 class="text-2xl font-black mb-6">ROI Calculator</h3>
+        <div class="space-y-5">
+          <div class="input-card"><div class="flex justify-between gap-4 mb-4"><label class="font-black">Số nhân sự áp dụng</label><span id="roiEmployeeValue" class="pill pill-blue">500 người</span></div><input id="roiEmployees" class="range" type="range" min="50" max="5000" value="500" step="50"></div>
+          <div class="input-card"><div class="flex justify-between gap-4 mb-4"><label class="font-black">Lương trung bình / tháng</label><span id="roiSalaryValue" class="pill pill-gold">12.000.000đ</span></div><input id="roiSalary" class="range" type="range" min="6000000" max="30000000" value="12000000" step="1000000"></div>
+          <div class="input-card"><div class="flex justify-between gap-4 mb-4"><label class="font-black">Tỷ lệ nghỉ việc trước Vrddi</label><span id="roiBeforeValue" class="pill pill-red">18%</span></div><input id="roiBefore" class="range" type="range" min="5" max="50" value="18" step="1"></div>
+          <div class="input-card"><div class="flex justify-between gap-4 mb-4"><label class="font-black">Tỷ lệ nghỉ việc sau Vrddi</label><span id="roiAfterValue" class="pill pill-green">14%</span></div><input id="roiAfter" class="range" type="range" min="0" max="40" value="14" step="1"></div>
+          <p class="text-small">Công thức: nhân sự giữ lại thêm × 2 tháng lương trung bình. Đây là mô phỏng nhanh để CEO/HRD nhìn thấy quy mô tác động.</p>
+        </div>
+      </div>
+      <div class="lg:col-span-3 space-y-5 fade">
+        <div class="result-card p-7 lg:p-9">
+          <div class="grid md:grid-cols-2 gap-7 mobile-two">
+            <div><div class="text-blue-100 font-bold mb-2">Nhân sự giữ lại thêm / năm</div><div id="roiSavedPeople" class="result-number text-4xl lg:text-5xl font-black tracking-tight">20</div><div class="text-blue-100 mt-3">= số nhân sự × chênh lệch tỷ lệ nghỉ việc</div></div>
+            <div><div class="text-blue-100 font-bold mb-2">ROI tiết kiệm ước tính / năm</div><div id="roiSavings" class="result-number text-4xl lg:text-5xl font-black tracking-tight text-amber-200">480 triệu</div><div class="text-blue-100 mt-3">= nhân sự giữ lại × 2 tháng lương</div></div>
+          </div>
+        </div>
+        <div class="grid md:grid-cols-3 gap-5 mobile-two">
+          <div class="card p-5"><div class="text-small font-bold">Chi phí thay thế / người</div><div id="roiCostPerExit" class="metric gradient-text mt-2">24 triệu</div></div>
+          <div class="card p-5"><div class="text-small font-bold">Tỷ lệ nghỉ việc giảm</div><div id="roiDelta" class="metric gradient-text mt-2">4%</div></div>
+          <div class="card p-5"><div class="text-small font-bold">Vốn DN bỏ ra</div><div class="metric gradient-text mt-2">0đ</div></div>
+        </div>
+        <div class="card p-6"><h4 class="font-black text-xl mb-2">Thông điệp cho CEO / CFO</h4><p id="roiText" class="text-body">Với 500 nhân sự, nếu tỷ lệ nghỉ việc giảm từ 18% xuống 14%, doanh nghiệp giữ lại thêm khoảng 20 người/năm. Với lương trung bình 12.000.000đ, khoản tiết kiệm ước tính là 480 triệu đồng/năm.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="demo" class="section bg-slate-50 border-y border-slate-200/70">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center max-w-4xl mx-auto mb-12 fade">
+      <div class="eyebrow mb-5">05 · Demo tính toán</div>
+      <h2 class="title-lg">Nhân viên đóng 500K/tháng — nhận được 6 triệu khi cần. Không lãi. Không vay ai.</h2>
+      <p class="lead mt-5">Nhóm 12 nhân viên, mỗi người đóng 500.000đ/tháng → pool 6 triệu đồng. Khi 1 người có nhu cầu hợp lệ, họ nhận ngay 6 triệu — gấp 12 lần số họ đã bỏ vào. Tháng sau họ lại đóng bình thường. Không ai mang nợ. <a class="font-black text-blue-700 underline decoration-blue-200 underline-offset-4" href="https://www.youtube.com/watch?v=DwW145VBNS0" target="_blank" rel="noopener">Xem video demo 2 phút</a>.</p>
+    </div>
+    <div class="grid lg:grid-cols-5 gap-8 mobile-stack">
+      <div class="lg:col-span-2 card-strong p-6 lg:p-8 fade">
+        <div class="flex items-center justify-between gap-4 mb-6"><h3 class="text-2xl font-black">Tính ngay: nhóm bạn nhận được bao nhiêu?</h3><div class="currency-toggle"><button class="active" type="button" onclick="displayCurrency='VND';this.classList.add('active');this.nextElementSibling.classList.remove('active');updateDemo();">VND</button><button type="button" onclick="displayCurrency='USD';this.classList.add('active');this.previousElementSibling.classList.remove('active');updateDemo();">USD</button></div></div>
+        <div class="space-y-5">
+          <div class="input-card"><div class="flex justify-between gap-4 mb-4"><label class="font-black">Số nhân viên trong nhóm</label><span id="groupValue" class="pill pill-blue">12 người</span></div><input id="groupSize" class="range" type="range" min="6" max="24" value="12" step="1"></div>
+          <div class="input-card"><div class="flex justify-between gap-4 mb-4"><label class="font-black">Đóng góp hằng tháng</label><span id="contributionValue" class="pill pill-gold">500.000đ</span></div><input id="monthlyContribution" class="range" type="range" min="300000" max="1000000" value="500000" step="100000"></div>
+          <div class="input-card"><div class="flex justify-between gap-4 mb-4"><label class="font-black">Số người cần hỗ trợ mỗi tháng</label><span id="requestValue" class="pill pill-green">1 người</span></div><input id="requestCount" class="range" type="range" min="1" max="4" value="1" step="1"></div>
+          <p class="text-small">Con số trên là ví dụ minh họa. Khi triển khai thực tế, mức đóng góp và điều kiện sẽ được cấu hình riêng cho từng doanh nghiệp.</p>
+        </div>
+      </div>
+      <div class="lg:col-span-3 space-y-5 fade">
+        <div class="result-card p-7 lg:p-9">
+          <div class="grid md:grid-cols-2 gap-7 mobile-two">
+            <div><div class="text-blue-100 font-bold mb-2">Tổng quỹ hỗ trợ mỗi tháng</div><div id="poolResult" class="result-number text-4xl lg:text-5xl font-black tracking-tight">6.000.000đ</div><div class="text-blue-100 mt-3">= số người × khoản đóng</div></div>
+            <div><div class="text-blue-100 font-bold mb-2">Một người nhận được khi cần</div><div id="payoutResult" class="result-number text-4xl lg:text-5xl font-black tracking-tight text-amber-200">6.000.000đ</div><div id="multipleResult" class="text-blue-100 mt-3">Tương đương 12x khoản đóng hằng tháng · ~240 USD</div></div>
+          </div>
+        </div>
+        <div class="grid md:grid-cols-3 gap-5 mobile-two">
+          <div class="card p-5"><div class="text-small font-bold">Người nhận trong tháng</div><div id="peoplePaid" class="metric gradient-text mt-2">1</div></div>
+          <div class="card p-5"><div class="text-small font-bold">Tổng chi trả mô phỏng</div><div id="totalPayout" class="metric gradient-text mt-2">6 triệu</div></div>
+          <div class="card p-5"><div class="text-small font-bold">Lãi suất nhân viên</div><div class="metric gradient-text mt-2">0%</div></div>
+        </div>
+        <div class="card p-6"><h4 class="font-black text-xl mb-2">Thông điệp dễ nhớ</h4><p id="cvpText" class="text-body">12 nhân viên, mỗi người đóng 500.000đ/tháng. Khi cần — một người nhận ngay 6.000.000đ, gấp 12 lần. Không lãi. Không nợ. Không xin ai.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-10 items-start mobile-stack">
+      <div class="fade">
+        <div class="eyebrow mb-5">06 · Nhân viên dùng vào việc gì?</div>
+        <h2 class="title-lg mb-6">Đây là những việc nhân viên không dám hỏi HR — nhưng Vrddi lo được.</h2>
+        <p class="lead mb-7">Vrddi tập trung vào các thời điểm tài chính nhạy cảm: lúc nhân viên cần tiền để lo cho sức khỏe, con cái, nhà cửa hoặc gia đình.</p>
+        <div class="card p-6">
+          <div class="font-black text-xl mb-4">Nhân viên thường dùng hỗ trợ cho:</div>
+          <div class="space-y-4">
+            <div><div class="flex justify-between font-bold text-sm mb-2"><span>Y tế</span><span>41%</span></div><div class="mini-chart"><div class="mini-fill" style="width:41%"></div></div></div>
+            <div><div class="flex justify-between font-bold text-sm mb-2"><span>Giáo dục</span><span>38%</span></div><div class="mini-chart"><div class="mini-fill" style="width:38%"></div></div></div>
+            <div><div class="flex justify-between font-bold text-sm mb-2"><span>Cải thiện nhà cửa</span><span>12%</span></div><div class="mini-chart"><div class="mini-fill" style="width:12%"></div></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-5 fade">
+        <div class="usecase"><div class="text-3xl mb-4">🏥</div><h3 class="font-black text-xl mb-2">Y tế</h3><p class="text-small">Viện phí không báo trước — khoản lớn nhất mà nhân viên không chuẩn bị được. Nhập viện, thuốc, xét nghiệm, xe cấp cứu, chăm sóc tại nhà, chạy thận, hóa trị.</p></div>
+        <div class="usecase"><div class="text-3xl mb-4">🎓</div><h3 class="font-black text-xl mb-2">Giáo dục</h3><p class="text-small">Đầu năm học — khoản chi mà mọi phụ huynh đều căng thẳng. Học phí, phí nhập học, sách vở, đồng phục, thiết bị học tập.</p></div>
+        <div class="usecase"><div class="text-3xl mb-4">🏠</div><h3 class="font-black text-xl mb-2">Nhà cửa</h3><p class="text-small">Sửa mái, nhà vệ sinh, bếp, bể nước, thiết bị gia dụng thiết yếu.</p></div>
+        <div class="usecase"><div class="text-3xl mb-4">🤝</div><h3 class="font-black text-xl mb-2">Gia đình</h3><p class="text-small">Đám cưới, nghĩa vụ gia đình, lễ hội, từ thiện, hoạt động cộng đồng.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="proof" class="section bg-white border-y border-slate-200/70">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center max-w-4xl mx-auto mb-12 fade">
+      <div class="eyebrow mb-5">07 · Số liệu vận hành</div>
+      <h2 class="title-lg">Đây không phải ý tưởng. Vrddi đã vận hành thực tế — và con số chứng minh điều đó.</h2>
+      <p class="lead mt-5">Các số liệu dưới đây được tóm tắt từ tài liệu giới thiệu Vrddi: giao dịch đã thực hiện, pipeline, đối tác payroll và mức độ tự động hóa.</p>
+    </div>
+    <div class="grid lg:grid-cols-4 gap-6 mobile-stack">
+      <div class="card-strong p-6 fade"><div class="pill pill-blue inline-block mb-4">Transactions</div><div class="metric gradient-text">2.700+</div><p class="text-small font-bold mt-3">giao dịch thành công — mỗi giao dịch là 1 nhân viên đã được hỗ trợ đúng lúc.</p></div>
+      <div class="card-strong p-6 fade"><div class="pill pill-gold inline-block mb-4">Pipeline</div><div class="metric gradient-text">96.000</div><p class="text-small font-bold mt-3">giao dịch đang trong hệ thống — traction đang tăng nhanh.</p></div>
+      <div class="card-strong p-6 fade"><div class="pill pill-green inline-block mb-4">Payroll partner</div><div class="metric gradient-text">45.000</div><p class="text-small font-bold mt-3">nhân viên tiếp cận qua đối tác SumoPayroll.</p></div>
+      <div class="card-strong p-6 fade"><div class="pill pill-blue inline-block mb-4">Automation</div><div class="metric gradient-text">99%</div><p class="text-small font-bold mt-3">xử lý tự động — HR gần như không phải làm gì.</p></div>
+    </div>
+    <div class="grid lg:grid-cols-3 gap-6 mt-6 mobile-stack">
+      <div class="card p-6 fade"><h3 class="font-black text-xl mb-2">Đang hoạt động tại Việt Nam</h3><p class="text-body">Đang pilot tại Việt Nam. Phù hợp nhất với doanh nghiệp trên 200 nhân viên có nhiều ca vận hành — BPO, bán lẻ, y tế, logistics.</p></div>
+      <div class="card p-6 fade"><h3 class="font-black text-xl mb-2">Đã mở rộng quốc tế</h3><p class="text-body">Được cấp phép bởi Ngân hàng Trung ương Bahrain và Qatar — nền tảng đạt chuẩn quốc tế.</p></div>
+      <div class="card p-6 fade"><h3 class="font-black text-xl mb-2">ROI employer 60x</h3><p class="text-body">ROI 60x cho doanh nghiệp: 0 đồng vốn bỏ ra, 98% nhóm vận hành ổn định.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="pilot" class="section">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="card-strong p-7 lg:p-10 overflow-hidden relative fade">
+      <div class="absolute -right-24 -top-24 w-72 h-72 rounded-full bg-blue-100"></div><div class="absolute -left-24 -bottom-24 w-72 h-72 rounded-full bg-amber-100"></div>
+      <div class="relative z-10 grid lg:grid-cols-2 gap-9 items-center mobile-stack">
+        <div>
+          <div class="eyebrow mb-5">Pilot cho doanh nghiệp</div>
+          <h2 class="title-lg mb-5">Bắt đầu nhỏ. Đo nhanh. Mở rộng khi thấy hiệu quả.</h2>
+          <p class="lead">Pilot lý tưởng: 50–300 nhân viên thuộc nhóm vận hành, bán lẻ, F&B hoặc logistics. Trong 2 tuần đầu — nhân viên nhận lần đầu, HR thấy dashboard chạy tự động, lãnh đạo thấy số thật. Không cần thay đổi hệ thống hiện có.</p>
+        </div>
+        <div class="space-y-4">
+          <div class="card p-5 flex gap-4"><div class="step-num">1</div><div><h3 class="font-black">Chọn nhóm pilot</h3><p class="text-small">50–300 nhân viên, chọn nhóm có nhu cầu rõ nhất. Vrddi sẽ gợi ý nhóm phù hợp dựa trên profile doanh nghiệp.</p></div></div>
+          <div class="card p-5 flex gap-4"><div class="step-num">2</div><div><h3 class="font-black">Kết nối dữ liệu nhân sự</h3><p class="text-small">Vrddi kết nối với hệ thống nhân sự hiện có trong 1–2 ngày. Đội ngũ Vrddi hỗ trợ toàn bộ — HR không cần làm thêm.</p></div></div>
+          <div class="card p-5 flex gap-4"><div class="step-num">3</div><div><h3 class="font-black">Theo dõi dashboard</h3><p class="text-small">Dashboard thời gian thực: tỷ lệ tham gia, số yêu cầu, tốc độ xử lý. CEO/HRD xem được báo cáo tác động ngay tuần đầu.</p></div></div>
+          <a href="mailto:contactus@vrddi.vn" class="btn-primary px-6 py-4 rounded-2xl font-black w-full">Đăng ký demo 30 phút — nhận đề xuất pilot trong 24h</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="py-9 text-center text-slate-500 border-t border-slate-200 bg-white">
+  <div class="max-w-7xl mx-auto px-6"><div class="font-black text-slate-900 text-xl mb-2">Vrddi</div><div class="text-small">Giữ chân nhân sự mà không tăng lương — không bỏ vốn, không tăng việc cho HR.</div></div>
+</footer>
+
 <script>
+
+let currentLang = 'vi';
 const I18N = {
-  en:{
-    menu:'Menu', brandSub:'Go To Market Plan | GTM 2026',
-    nav:['Key Message','12-Month Goals','GTM Strategy','Target Customers','Execution Roadmap','Customer Growth Loop','Pricing Strategy','Risks & Responses','Success Factors','Advertising','LinkedIn Content','Product Architecture','Enterprise Growth Loop','Competitive Advantage (Moat)'],
-    sub:[
-      'Flexible income allocation for employees, translated into a clear leadership message.',
-      'Commercial targets for the first 12 months in Vietnam.',
-      'Trust from leadership, participation from employees, expansion through HR.',
-      'The B2B segments with the clearest workforce-retention pain.',
-      'Phase-one actions to create market foundation and early pilots.',
-      'How employee payout creates adoption, advocacy and expansion.',
-      'Early pricing approach to reduce friction and increase participation.',
-      'Core objections and the response strategy for enterprise buyers.',
-      'Three non-negotiables for launch success.',
-      'Performance and value-proposition hooks for CEO and HRD audiences.',
-      'LinkedIn post formats and pilot registration flow.',
-      'Dual-layer product architecture: India core and Vietnam localization.',
-      'Enterprise growth flywheel from pilot, proof, expansion to network benchmark.',
-      'Moat strategy from operational layer to workforce intelligence and cross-company benchmarks.'
-    ]
-  },
-  vi:{
-    menu:'Menu', brandSub:'Go To Market Plan | GTM 2026',
-    nav:['Key Message','Mục tiêu 12 tháng','Chiến lược GTM','Khách hàng mục tiêu','Giai đoạn triển khai','Customer Growth Loop','Chiến lược giá','Rủi ro & Giải pháp','Yếu tố thành công','Quảng cáo','LinkedIn Content','Kiến trúc sản phẩm','Enterprise Growth Loop','Lợi thế cạnh tranh (Moat)'],
-    sub:[
-      'Giải pháp quản trị và phân bổ thu nhập linh hoạt cho nhân sự.',
-      'Mục tiêu thương mại trong 12 tháng đầu tại Việt Nam.',
-      'Niềm tin từ CEO, sự tham gia từ nhân viên, mở rộng qua HR.',
-      'Các phân khúc B2B có áp lực ổn định nhân sự rõ nhất.',
-      'Các bước giai đoạn 1 để thiết lập nền tảng thị trường và pilot.',
-      'Cách khoản chi trả đầu tiên tạo adoption, lan tỏa và mở rộng.',
-      'Chiến lược giai đoạn đầu để giảm rào cản và tăng tham gia.',
-      'Các phản biện cốt lõi và cách xử lý với khách hàng doanh nghiệp.',
-      'Ba yếu tố bắt buộc để triển khai thành công.',
-      'Các nhóm hook cho CEO và HRD.',
-      'Format nội dung LinkedIn và form đăng ký demo / pilot.',
-      'Mô hình kiến trúc hai tầng: lõi Ấn Độ và bản địa hóa Việt Nam.',
-      'Vòng quay tăng trưởng doanh nghiệp từ pilot, bằng chứng, mở rộng đến benchmark mạng lưới.',
-      'Chiến lược lợi thế cạnh tranh từ lớp vận hành đến trí tuệ dữ liệu lực lượng lao động và benchmark liên doanh nghiệp.'
-    ]
-  }
+  "Phúc lợi Sức khỏe Tài chính nhân sự": "Employee Financial Wellness Benefit",
+  "Nhân sự nghỉ việc": "Attrition pain",
+  "Giải pháp": "Solution",
+  "Demo": "Demo",
+  "Minh chứng": "Proof",
+  "Pilot": "Pilot",
+  "Tính ROI": "Calculate ROI",
+  "Đã vận hành tại Ấn Độ, Bahrain, Qatar — Đang pilot tại Việt Nam": "Operating in India, Bahrain and Qatar — now piloting in Vietnam",
+  "Giữ người không cần tăng lương.": "Retain people without raising salaries.",
+  "Nhân viên có tiền khi cần": "Employees get money when they need it",
+  "— không vay, không lãi.": "— no loan, no interest.",
+  "Mỗi tháng nhân viên đóng một khoản nhỏ. Khi có việc gấp — viện phí, học phí, sửa nhà — họ nhận hỗ trợ lớn hơn": "Each month, employees contribute a small amount. When urgent needs arise — medical bills, tuition, home repairs — they can receive support worth",
+  "10–12 lần": "10–12x",
+  ", ngay trong kỳ lương. Doanh nghiệp không bỏ vốn. HR không tăng việc.": "within the pay cycle. The company uses no working capital. HR gets no extra workload.",
+  "Tính ROI cho doanh nghiệp": "Calculate ROI for your company",
+  "Xem demo thực tế (2 phút)": "Watch the 2-minute demo",
+  "lãi — nhân viên nhận, không phải vay": "interest — employees receive support, not debt",
+  "tự động — HR không cần xử lý thủ công": "automated — HR avoids manual processing",
+  "vốn doanh nghiệp bỏ ra": "company working capital required",
+  "Cách vận hành — 3 bước": "How it works — 3 steps",
+  "3 bước từ đóng góp → nhận tiền — không qua ai duyệt.": "Three steps from contribution → payout — without manual approval.",
+  "Live model": "Live model",
+  "Nhân viên có việc bất ngờ cần tiền": "Employees face unexpected money needs",
+  "Viện phí đột xuất, học phí đầu năm, sửa nhà — những khoản không thể đợi đến 2 tháng lương tới.": "Unexpected medical bills, school fees and home repairs cannot wait for the next two paychecks.",
+  "Hệ thống xử lý thay HR": "The system handles it for HR",
+  "Hệ thống kiểm tra điều kiện và gợi ý quyết định — không cần HR xem từng hồ sơ.": "The system checks eligibility and recommends decisions — HR does not review every case.",
+  "Nhận 10–12x khoản đóng — ngay trong kỳ lương gần nhất": "Receive 10–12x the contribution — within the nearest payroll cycle",
+  "Nhân viên cảm nhận được doanh nghiệp quan tâm thật sự — không phải vay nợ, không áp lực trả.": "Employees feel genuine support from the company — no debt, no repayment pressure.",
+  "01 · Nỗi đau thật": "01 · Real pain",
+  "Nhân sự không nghỉ vì lương thấp — họ nghỉ vì": "Employees do not only leave because of low pay — they leave because of",
+  "thiếu tiền đúng lúc": "cash shortage at the wrong moment",
+  "Khi thiếu tiền trước kỳ lương, nhân viên không báo HR. Họ âm thầm vay tín dụng đen, mượn đồng nghiệp — hoặc bắt đầu nhìn sang chỗ khác hoặc làm thêm nhiều việc. Doanh nghiệp thường chỉ biết khi họ đã nộp đơn nghỉ.": "When employees run out of money before payday, they rarely tell HR. They quietly borrow at high rates, ask colleagues for help, look for side jobs, or start looking elsewhere. Companies often only know when the resignation arrives.",
+  "Với nhân viên": "For employees",
+  "Một khoản chi 20–30 triệu có thể kéo nhân viên vào vòng xoay vay lãi, mất ngủ, giảm năng suất — và cuối cùng là nghỉ việc.": "A sudden 20–30 million VND expense can pull an employee into high-interest debt, sleeplessness, lower productivity — and eventually resignation.",
+  "Áp lực tài chính": "Financial stress",
+  "Với HR": "For HR",
+  "Mỗi yêu cầu tạm ứng tốn HR 30–60 phút: tiếp nhận, xác minh, trình ký, theo dõi hoàn ứng. Với 500 nhân viên, chỉ cần 5% cần tạm ứng mỗi tháng là HR mất hàng chục giờ vô ích.": "Each salary advance request can cost HR 30–60 minutes: intake, verification, approval and tracking. In a 500-person company, if only 5% request advances monthly, HR loses dozens of hours.",
+  "HR quá tải không đáng": "Unnecessary HR overload",
+  "Với CEO / CFO": "For CEO / CFO",
+  "1 nhân viên nghỉ việc tốn trung bình 6–12 triệu chi phí thay thế. Tăng lương 10% không giải quyết được bài toán “thiếu tiền tháng này”. Và tạm ứng lương thì đụng thẳng vào vốn lưu động.": "One resignation can cost 6–12 million VND to replace. A 10% raise does not solve the “I need money this month” problem. Salary advances directly affect working capital.",
+  "Tốn tiền nhưng không giữ được người": "Spending more without retaining people",
+  "02 · Giải pháp": "02 · Solution",
+  "Vrddi: nhân viên có tiền khi cần —": "Vrddi: employees get money when they need it —",
+  "doanh nghiệp không bỏ vốn, HR không thêm việc": "no company capital, no extra HR work",
+  "Nhân viên đóng góp nhỏ mỗi tháng vào một pool chung. Khi có nhu cầu hợp lệ, họ nhận khoản hỗ trợ lớn hơn 10–12 lần — không lãi, không vay, không duyệt thủ công. Doanh nghiệp không bỏ một đồng vốn.": "Employees make a small monthly contribution into a shared pool. When an eligible need arises, they receive 10–12x support — no interest, no loan, no manual approval. The company contributes no working capital.",
+  "Nhân viên": "Employee",
+  "tham gia": "joins",
+  "Đóng góp": "Monthly",
+  "hằng tháng": "contribution",
+  "Nhu cầu": "Real",
+  "thật": "need",
+  "Xét duyệt": "Automated",
+  "tự động": "decision",
+  "Nhận tiền": "0% interest",
+  "0% lãi": "payout",
+  "Nền tảng": "Vrddi",
+  "Nhân viên có tiền đúng lúc — không vay, không xấu hổ": "Employees get money at the right time — no loan, no embarrassment",
+  "Có điểm tựa tài chính ngay khi cần — không cần vay bên ngoài, không áp lực lãi suất, không cảm giác mang nợ.": "A financial safety net when needed — no external borrowing, no interest pressure, no debt stigma.",
+  "HR không ôm thêm việc": "HR does not take on more work",
+  "99% yêu cầu được xử lý tự động. HR chỉ nhìn vào dashboard — không phải xử lý từng hồ sơ, không thêm quy trình.": "99% of requests are processed automatically. HR monitors the dashboard instead of handling every file.",
+  "Doanh nghiệp không bỏ một đồng vốn": "The company uses zero working capital",
+  "Pool được tạo từ đóng góp của nhân viên — không từ ngân sách công ty. Không có nợ xấu, không rủi ro thu hồi, không ảnh hưởng dòng tiền doanh nghiệp.": "The pool is created by employee contributions, not the company budget. No bad debt, no collection risk, no impact on company cash flow.",
+  "03 · Điểm khác biệt": "03 · What makes Vrddi different",
+  "Khác tạm ứng lương. Khác vay tiêu dùng. Đây là phúc lợi giữ chân nhân sự thật sự.": "Not salary advance. Not consumer lending. A real retention benefit.",
+  "Tạm ứng lương giải quyết 1 người, 1 lần. Vrddi tạo phúc lợi cho cả lực lượng — nhân viên thấy giá trị ngay, HR giảm tải ngay, doanh nghiệp không bỏ vốn.": "Salary advances help one person once. Vrddi creates a workforce-wide benefit — employees feel the value, HR workload drops, and the business uses no capital.",
+  "Tiêu chí": "Criteria",
+  "Tạm ứng / Vay": "Advance / Loan",
+  "✨ Vrddi": "✨ Vrddi",
+  "Trải nghiệm nhân viên": "Employee experience",
+  "Chậm, giấy tờ, dễ ngại hỏi": "Slow, paperwork-heavy, awkward to ask",
+  "Nhanh, tự động, không ngại xin — nhận trong tuần": "Fast, automated and stigma-free — received within the week",
+  "Nguồn chi trả": "Funding source",
+  "Vốn công ty hoặc khoản vay": "Company capital or loan",
+  "Pool từ đóng góp nhân viên — doanh nghiệp không bỏ vốn": "Pool from employee contributions — no company capital",
+  "Workload HR": "HR workload",
+  "Tăng thêm mỗi lần có yêu cầu": "Increases with every request",
+  "Giảm 99% — HR chỉ theo dõi dashboard, không xử lý hồ sơ": "Reduced by 99% — HR tracks the dashboard, not files",
+  "Phạm vi áp dụng": "Coverage",
+  "Thường hạn chế theo chính sách": "Often limited by policy",
+  "Mở rộng toàn lực lượng, cấu hình linh hoạt theo nhóm": "Scales across the workforce, configurable by group",
+  "Cảm nhận của nhân viên": "Employee perception",
+  "Là nợ hoặc ứng trước — áp lực trả": "Feels like debt or advance — repayment pressure",
+  "Là phúc lợi thật — nhân viên nhớ, gắn bó, ít nghỉ việc hơn": "Feels like a real benefit — memorable, sticky and retention-oriented",
+  "Rủi ro tài chính doanh nghiệp": "Financial risk for the business",
+  "Nợ xấu, thu hồi khó, ảnh hưởng dòng tiền": "Bad debt, collection risk, cash-flow impact",
+  "Không có — pool từ nhân viên, doanh nghiệp không liên đới": "None — employee-funded pool, no business liability",
+  "Chi phí ẩn": "Hidden costs",
+  "Thời gian HR, giấy tờ, rủi ro quản trị": "HR time, paperwork and governance risk",
+  "Gần như bằng 0 — 99% tự động hóa": "Near zero — 99% automation",
+  "Tác động retention": "Retention impact",
+  "Mờ — không đo được": "Unclear and hard to measure",
+  "Rõ — dashboard theo dõi tỷ lệ tham gia và sự gắn bó": "Clear — dashboard tracks adoption and engagement",
+  "04 · ROI cho doanh nghiệp": "04 · Employer ROI",
+  "Tính nhanh khoản tiết kiệm khi giảm nghỉ việc.": "Quickly estimate savings from lower attrition.",
+  "ROI tiết kiệm được mô phỏng từ số lượng nhân sự áp dụng, lương trung bình và mức giảm tỷ lệ nghỉ việc sau khi triển khai Vrddi. Mỗi nhân sự nghỉ việc được quy đổi bằng 2 tháng lương do thời gian trống vị trí và chi phí tuyển thay thế.": "Estimated ROI is based on covered employees, average salary and attrition reduction after Vrddi. Each avoided resignation is valued at two months of salary for vacancy and replacement costs.",
+  "ROI Calculator": "ROI Calculator",
+  "Số nhân sự áp dụng": "Covered employees",
+  "Lương trung bình / tháng": "Average monthly salary",
+  "Tỷ lệ nghỉ việc trước Vrddi": "Attrition before Vrddi",
+  "Tỷ lệ nghỉ việc sau Vrddi": "Attrition after Vrddi",
+  "Công thức: nhân sự giữ lại thêm × 2 tháng lương trung bình. Đây là mô phỏng nhanh để CEO/HRD nhìn thấy quy mô tác động.": "Formula: extra retained employees × 2 months of average salary. A quick model for CEO/HRD to see impact scale.",
+  "Nhân sự giữ lại thêm / năm": "Extra employees retained / year",
+  "= số nhân sự × chênh lệch tỷ lệ nghỉ việc": "= employees × attrition reduction",
+  "ROI tiết kiệm ước tính / năm": "Estimated annual savings",
+  "= nhân sự giữ lại × 2 tháng lương": "= retained employees × 2 months salary",
+  "Chi phí thay thế / người": "Replacement cost / person",
+  "Tỷ lệ nghỉ việc giảm": "Attrition reduction",
+  "Vốn DN bỏ ra": "Company capital",
+  "Thông điệp cho CEO / CFO": "Message for CEO / CFO",
+  "05 · Demo tính toán": "05 · Payout demo",
+  "Nhân viên đóng 500K/tháng — nhận được 6 triệu khi cần. Không lãi. Không vay ai.": "Employees contribute 500K/month — and can receive 6 million when needed. No interest. No loan.",
+  "Nhóm 12 nhân viên, mỗi người đóng 500.000đ/tháng → pool 6 triệu đồng. Khi 1 người có nhu cầu hợp lệ, họ nhận ngay 6 triệu — gấp 12 lần số họ đã bỏ vào. Tháng sau họ lại đóng bình thường. Không ai mang nợ.": "A group of 12 employees contributes 500,000 VND each month → a 6 million VND pool. When one eligible need arises, the employee receives 6 million — 12x their contribution. The next month, contributions continue normally. No one carries debt.",
+  "Xem video demo 2 phút": "Watch the 2-minute demo",
+  "Tính ngay: nhóm bạn nhận được bao nhiêu?": "Calculate how much your group can receive",
+  "Số nhân viên trong nhóm": "Employees in group",
+  "Đóng góp hằng tháng": "Monthly contribution",
+  "Số người cần hỗ trợ mỗi tháng": "Employees needing support monthly",
+  "Con số trên là ví dụ minh họa. Khi triển khai thực tế, mức đóng góp và điều kiện sẽ được cấu hình riêng cho từng doanh nghiệp.": "This is an illustrative example. In deployment, contribution levels and eligibility rules are configured for each company.",
+  "Tổng quỹ hỗ trợ mỗi tháng": "Monthly support pool",
+  "= số người × khoản đóng": "= employees × contribution",
+  "Một người nhận được khi cần": "Amount one employee receives",
+  "Tương đương 12x khoản đóng hằng tháng · ~240 USD": "Equivalent to 12x the monthly contribution · ~240 USD",
+  "Người nhận trong tháng": "Recipients this month",
+  "Tổng chi trả mô phỏng": "Simulated total payout",
+  "Lãi suất nhân viên": "Employee interest rate",
+  "Thông điệp dễ nhớ": "Simple message",
+  "06 · Nhân viên dùng vào việc gì?": "06 · What do employees use it for?",
+  "Đây là những việc nhân viên không dám hỏi HR — nhưng Vrddi lo được.": "These are the needs employees hesitate to ask HR about — but Vrddi can support.",
+  "Vrddi tập trung vào các thời điểm tài chính nhạy cảm: lúc nhân viên cần tiền để lo cho sức khỏe, con cái, nhà cửa hoặc gia đình.": "Vrddi focuses on financially sensitive moments: health, children, home and family needs.",
+  "Nhân viên thường dùng hỗ trợ cho:": "Common support categories:",
+  "Y tế": "Healthcare",
+  "Giáo dục": "Education",
+  "Cải thiện nhà cửa": "Home improvement",
+  "Viện phí không báo trước — khoản lớn nhất mà nhân viên không chuẩn bị được. Nhập viện, thuốc, xét nghiệm, xe cấp cứu, chăm sóc tại nhà, chạy thận, hóa trị.": "Unexpected hospital costs — often the largest unplanned expense. Hospital deposit, medicine, tests, ambulance, home care, dialysis and chemotherapy.",
+  "Đầu năm học — khoản chi mà mọi phụ huynh đều căng thẳng. Học phí, phí nhập học, sách vở, đồng phục, thiết bị học tập.": "Back-to-school expenses — a stressful moment for every parent. Tuition, admission fees, books, uniforms and learning devices.",
+  "Nhà cửa": "Home",
+  "Sửa mái, nhà vệ sinh, bếp, bể nước, thiết bị gia dụng thiết yếu.": "Roof repairs, bathroom, kitchen, water tank and essential home appliances.",
+  "Gia đình": "Family",
+  "Đám cưới, nghĩa vụ gia đình, lễ hội, từ thiện, hoạt động cộng đồng.": "Weddings, family obligations, festivals, charity and community activities.",
+  "07 · Số liệu vận hành": "07 · Operating proof",
+  "Đây không phải ý tưởng. Vrddi đã vận hành thực tế — và con số chứng minh điều đó.": "This is not a concept. Vrddi is operating — and the numbers prove it.",
+  "Các số liệu dưới đây được tóm tắt từ tài liệu giới thiệu Vrddi: giao dịch đã thực hiện, pipeline, đối tác payroll và mức độ tự động hóa.": "The numbers below summarize Vrddi materials: transactions completed, pipeline, payroll partner and automation level.",
+  "Yêu cầu thành công — mỗi Yêu cầu là 1 nhân viên được hỗ trợ đúng lúc.": "successful transactions — employees supported financially at the right time.",
+  "giao dịch đang trong hệ thống — traction đang tăng nhanh.": "transactions in the pipeline — traction is growing quickly.",
+  "nhân viên tiếp cận qua đối tác SumoPayroll.": "employees accessed through SumoPayroll partnership.",
+  "xử lý tự động — HR gần như không phải làm gì.": "automated processing — HR does almost nothing.",
+  "Đang hoạt động tại Việt Nam": "Operating in Vietnam",
+  "Đang pilot tại Việt Nam. Phù hợp nhất với doanh nghiệp trên 200 nhân viên có nhiều ca vận hành — BPO, bán lẻ, y tế, logistics.": "Now piloting in Vietnam. Best suited for companies with 200+ employees and shift-based operations — BPO, retail, healthcare and logistics.",
+  "Đã mở rộng quốc tế": "International expansion",
+  "Được cấp phép bởi Ngân hàng Trung ương Bahrain và Qatar — nền tảng đạt chuẩn quốc tế.": "Approved by the Central Banks of Bahrain and Qatar — built to international standards.",
+  "ROI 60x cho doanh nghiệp: 0 đồng vốn bỏ ra, 98% nhóm vận hành ổn định.": "60x employer ROI: zero working capital, 98% group stability.",
+  "Pilot cho doanh nghiệp": "Enterprise pilot",
+  "Bắt đầu nhỏ. Đo nhanh. Mở rộng khi thấy hiệu quả.": "Start small. Measure fast. Scale after proof.",
+  "Pilot lý tưởng: 50–300 nhân viên thuộc nhóm vận hành, bán lẻ, F&B hoặc logistics. Trong 2 tuần đầu — nhân viên nhận lần đầu, HR thấy dashboard chạy tự động, lãnh đạo thấy số thật. Không cần thay đổi hệ thống hiện có.": "Ideal pilot: 50–300 employees in operations, retail, F&B or logistics. In the first two weeks, employees receive the first payout, HR sees the dashboard run automatically, and leaders see real numbers. No need to change existing systems.",
+  "Chọn nhóm pilot": "Select pilot group",
+  "50–300 nhân viên, chọn nhóm có nhu cầu rõ nhất. Vrddi sẽ gợi ý nhóm phù hợp dựa trên profile doanh nghiệp.": "50–300 employees, selected from the group with the clearest need. Vrddi can recommend the best-fit group based on company profile.",
+  "Kết nối dữ liệu nhân sự": "Connect HR data",
+  "Vrddi kết nối với hệ thống nhân sự hiện có trong 1–2 ngày. Đội ngũ Vrddi hỗ trợ toàn bộ — HR không cần làm thêm.": "Vrddi connects with the existing HR system in 1–2 days. The Vrddi team supports the full setup — HR does not take on extra work.",
+  "Theo dõi dashboard": "Track the dashboard",
+  "Dashboard thời gian thực: tỷ lệ tham gia, số yêu cầu, tốc độ xử lý. CEO/HRD xem được báo cáo tác động ngay tuần đầu.": "Real-time dashboard: adoption, requests and processing speed. CEO/HRD can see impact reports in week one.",
+  "Đăng ký demo 30 phút — nhận đề xuất pilot trong 24h": "Book a 30-minute demo — receive a pilot proposal within 24h",
+  "Giữ chân nhân sự mà không tăng lương — không bỏ vốn, không tăng việc cho HR.": "Retain employees without raising salaries — no capital, no extra HR work."
 };
-const TABS = [{render:()=>({
-vi:`<div class="grid"><div class="card span-12 soft-blue"><p class="card-title">🔥 Giải pháp quản trị và phân bổ thu nhập linh hoạt cho nhân sự</p><p class="lead">Tối ưu phúc lợi tài chính nhân viên thông qua cơ chế phân bổ thu nhập linh hoạt</p><div class="grid" style="margin-top:18px"><div class="card span-4"><p class="card-title">👉 CEO</p><p class="quote small">"Giảm nghỉ việc 20% – tiết kiệm hàng tỷ mỗi năm"</p></div><div class="card span-4"><p class="card-title">👉 HRD</p><p class="quote small">"Giữ chân nhân sự mà không cần tăng lương"</p></div><div class="card span-4"><p class="card-title">👉 Nhân sự</p><p class="quote small">"Nhận 10–12 lần số tiền đóng mỗi tháng — Có tiền lớn ngay khi cần mà không phải vay ai"</p></div></div></div><div class="card span-12"><p class="card-title">🎯 Core Value Proposition</p><table><tbody><tr><td data-label="Nhóm"><strong>Nhân viên:</strong></td><td data-label="Nội dung">Cần tiền gấp nhưng không muốn vay</td></tr><tr><td data-label="Nhóm"><strong>Doanh nghiệp:</strong></td><td data-label="Nội dung">Muốn giữ người nhưng không muốn tăng lương</td></tr><tr><td data-label="Nhóm"><strong>Giải pháp:</strong></td><td data-label="Nội dung">Tối ưu lại dòng tiền nội bộ</td></tr></tbody></table></div></div>`,
-en:`<div class="grid"><div class="card span-12 soft-blue"><p class="card-title">🔥 Flexible income management and allocation for employees</p><p class="lead">Optimize employee financial wellness through a flexible income allocation mechanism.</p><div class="grid" style="margin-top:18px"><div class="card span-4"><p class="card-title">👉 CEO</p><p class="quote small">“Reduce attrition by 20% — save billions every year.”</p></div><div class="card span-4"><p class="card-title">👉 HRD</p><p class="quote small">“Retain employees without increasing salary.”</p></div><div class="card span-4"><p class="card-title">👉 Employees</p><p class="quote small">“Receive 10–12x your monthly contribution — access meaningful money when needed without borrowing.”</p></div></div></div><div class="card span-12"><p class="card-title">🎯 Core Value Proposition</p><table><tbody><tr><td data-label="Audience"><strong>Employees:</strong></td><td data-label="Message">Need urgent money but do not want to borrow</td></tr><tr><td data-label="Audience"><strong>Enterprises:</strong></td><td data-label="Message">Want to retain people but do not want to increase salary</td></tr><tr><td data-label="Audience"><strong>Solution:</strong></td><td data-label="Message">Optimize internal cash flow allocation</td></tr></tbody></table></div></div>`
-})},
-{render:()=>({
-vi:`<div class="grid"><div class="card span-5"><p class="card-title">Mục tiêu chính</p><ul class="list-detail"><li>🚀 20 doanh nghiệp ký hợp đồng</li><li>👥 5,000 – 10,000 nhân viên tham gia</li></ul></div><div class="card span-7"><p class="card-title">Sale Funnel (12 Tháng)</p><div class="funnel"><div class="funnel-card"><strong>150</strong><span>Gặp khách hàng</span></div><div class="funnel-card"><strong>40</strong><span>LOI (thư quan tâm)</span></div><div class="funnel-card"><strong>20</strong><span>Pilot (thử nghiệm)</span></div><div class="funnel-card"><strong>20</strong><span>Go-live (vận hành thật)</span></div><div class="funnel-card"><strong>&gt;35%</strong><span>Tỷ lệ tham gia</span></div></div><div class="table-wrap" style="margin-top:16px"><table><thead><tr><th>Giai đoạn</th><th class="right">Mục tiêu</th></tr></thead><tbody><tr><td data-label="Giai đoạn">Gặp khách hàng</td><td data-label="Mục tiêu" class="right">150</td></tr><tr><td data-label="Giai đoạn">LOI (thư quan tâm)</td><td data-label="Mục tiêu" class="right">40</td></tr><tr><td data-label="Giai đoạn">Pilot (thử nghiệm)</td><td data-label="Mục tiêu" class="right">20</td></tr><tr><td data-label="Giai đoạn">Go-live (vận hành thật)</td><td data-label="Mục tiêu" class="right">20</td></tr><tr><td data-label="Giai đoạn"><strong>Tỷ lệ tham gia</strong></td><td data-label="Mục tiêu" class="right"><strong>&gt;35%</strong></td></tr></tbody></table></div></div></div>`,
-en:`<div class="grid"><div class="card span-5"><p class="card-title">Main Goals</p><ul class="list-detail"><li>🚀 20 enterprises signed</li><li>👥 5,000 – 10,000 employees participating</li></ul></div><div class="card span-7"><p class="card-title">Sales Funnel (12 Months)</p><div class="funnel"><div class="funnel-card"><strong>150</strong><span>Customer meetings</span></div><div class="funnel-card"><strong>40</strong><span>LOIs</span></div><div class="funnel-card"><strong>20</strong><span>Pilots</span></div><div class="funnel-card"><strong>20</strong><span>Go-lives</span></div><div class="funnel-card"><strong>&gt;35%</strong><span>Participation rate</span></div></div><div class="table-wrap" style="margin-top:16px"><table><thead><tr><th>Stage</th><th class="right">Target</th></tr></thead><tbody><tr><td data-label="Stage">Customer meetings</td><td data-label="Target" class="right">150</td></tr><tr><td data-label="Stage">LOI</td><td data-label="Target" class="right">40</td></tr><tr><td data-label="Stage">Pilot</td><td data-label="Target" class="right">20</td></tr><tr><td data-label="Stage">Go-live</td><td data-label="Target" class="right">20</td></tr><tr><td data-label="Stage"><strong>Participation rate</strong></td><td data-label="Target" class="right"><strong>&gt;35%</strong></td></tr></tbody></table></div></div></div>`
-})},
-{render:()=>({
-vi:`<div class="grid"><div class="card span-12 soft-blue"><p class="card-title">🎯 Công thức thành công: Niềm tin (CEO) → Tham gia (Nhân viên) → Mở rộng (HR)</p></div><div class="card span-4"><p class="card-title">1. Top-down</p><p class="desc">CEO ban hành chính sách → nhân viên tin tưởng</p></div><div class="card span-4"><p class="card-title">2. Pilot trước</p><p class="desc">Thử nhỏ → chứng minh hiệu quả → mở rộng</p></div><div class="card span-4"><p class="card-title">3. WOW Moment</p><p class="desc">Tháng đầu đóng góp 1 triệu, Lần nhận tiền đầu tiên nhận 12 triệu, không trừ thuế</p></div></div>`,
-en:`<div class="grid"><div class="card span-12 soft-blue"><p class="card-title">🎯 Success formula: Trust (CEO) → Participation (Employees) → Expansion (HR)</p></div><div class="card span-4"><p class="card-title">1. Top-down</p><p class="desc">CEO issues the policy → employees trust the program</p></div><div class="card span-4"><p class="card-title">2. Pilot first</p><p class="desc">Start small → prove impact → expand</p></div><div class="card span-4"><p class="card-title">3. WOW Moment</p><p class="desc">Contribute VND 1 million in the first month; receive VND 12 million in the first payout, without tax deduction</p></div></div>`
-})},
-{render:()=>({
-vi:`<div class="grid"><div class="card span-6"><p class="card-title">Phân khúc B2B chính</p><div><span class="tag blue">BPO &amp; Contact Center</span><span class="tag blue">Healthcare</span><span class="tag blue">Education</span><span class="tag blue">Bảo hiểm</span></div></div><div class="card span-6"><p class="card-title">💥 Insight</p><div class="plan-box">"Doanh nghiệp có lực lượng lao động lớn và áp lực ổn định nhân sự cao sẽ có nhu cầu mạnh nhất đối với Nền tảng hỗ trợ HR Retention"</div></div><div class="card span-12"><p class="card-title">Bảng tóm tắt</p><table><thead><tr><th>Phân khúc</th><th>Lý do phù hợp</th></tr></thead><tbody><tr><td data-label="Phân khúc">BPO &amp; Contact Center</td><td data-label="Lý do phù hợp">Lực lượng lao động lớn, áp lực giữ người cao</td></tr><tr><td data-label="Phân khúc">Healthcare</td><td data-label="Lý do phù hợp">Nhu cầu ổn định nhân sự vận hành liên tục</td></tr><tr><td data-label="Phân khúc">Education</td><td data-label="Lý do phù hợp">Nhiều nhóm nhân sự cần phúc lợi tài chính rõ ràng</td></tr><tr><td data-label="Phân khúc">Bảo hiểm</td><td data-label="Lý do phù hợp">Đội ngũ phân tán, cần tăng gắn kết và retention</td></tr></tbody></table></div></div>`,
-en:`<div class="grid"><div class="card span-6"><p class="card-title">Main B2B Segments</p><div><span class="tag blue">BPO &amp; Contact Center</span><span class="tag blue">Healthcare</span><span class="tag blue">Education</span><span class="tag blue">Insurance</span></div></div><div class="card span-6"><p class="card-title">💥 Insight</p><div class="plan-box">“Enterprises with large workforces and high workforce-stability pressure will have the strongest need for an HR Retention Support Platform.”</div></div><div class="card span-12"><p class="card-title">Summary Table</p><table><thead><tr><th>Segment</th><th>Why it fits</th></tr></thead><tbody><tr><td data-label="Segment">BPO &amp; Contact Center</td><td data-label="Why it fits">Large workforce with high retention pressure</td></tr><tr><td data-label="Segment">Healthcare</td><td data-label="Why it fits">Continuous operations require workforce stability</td></tr><tr><td data-label="Segment">Education</td><td data-label="Why it fits">Multiple employee groups need clear financial wellness benefits</td></tr><tr><td data-label="Segment">Insurance</td><td data-label="Why it fits">Distributed teams need stronger engagement and retention</td></tr></tbody></table></div></div>`
-})},
-{render:()=>({
-vi:`<div class="grid"><div class="card span-12"><p class="card-title">GIAI ĐOẠN 1 (Tháng 1–2): THIẾT LẬP NỀN TẢNG</p><div class="grid"><div class="card span-4"><strong>🎯 Mục tiêu:</strong><ul class="list-detail"><li>50 buổi gặp</li><li>10 LOI</li></ul></div><div class="card span-8"><table><tbody><tr><td data-label="Bước"><strong>BƯỚC 1: Danh sách</strong></td><td data-label="Nội dung">Lập 100 công ty mục tiêu. Đối tượng: HRD, CEO.</td></tr><tr><td data-label="Bước"><strong>BƯỚC 2: Kịch bản</strong></td><td data-label="Nội dung">Nhấn mạnh chi phí nghỉ việc (Ví dụ: 1.000 NS, nghỉ 50% ⇒ Mất 5 tỷ/năm).<br><em>"Vrddi giúp tiết kiệm ~1 tỷ mà không cần tăng lương"</em></td></tr><tr><td data-label="Bước"><strong>BƯỚC 3: Tài liệu</strong></td><td data-label="Nội dung">Chuẩn hóa NDA, LOI (song ngữ), Hợp đồng, CAF (Excel), Chính sách EFW.</td></tr></tbody></table></div></div></div></div>`,
-en:`<div class="grid"><div class="card span-12"><p class="card-title">PHASE 1 (Month 1–2): FOUNDATION SETUP</p><div class="grid"><div class="card span-4"><strong>🎯 Goals:</strong><ul class="list-detail"><li>50 meetings</li><li>10 LOIs</li></ul></div><div class="card span-8"><table><tbody><tr><td data-label="Step"><strong>STEP 1: Target list</strong></td><td data-label="Details">Build a list of 100 target companies. Decision makers: HRD, CEO.</td></tr><tr><td data-label="Step"><strong>STEP 2: Script</strong></td><td data-label="Details">Emphasize attrition cost. Example: 1,000 employees, 50% turnover ⇒ VND 5 billion lost per year.<br><em>“Vrddi helps save ~VND 1 billion without increasing salary.”</em></td></tr><tr><td data-label="Step"><strong>STEP 3: Materials</strong></td><td data-label="Details">Standardize NDA, bilingual LOI, Contract, CAF (Excel), and EFW Policy.</td></tr></tbody></table></div></div></div></div>`
-})},
-{render:()=>({
-vi:`<div class="grid"><div class="card span-12"><p class="card-title">🔁 Vòng lặp tăng trưởng</p><div class="loop"><div class="loop-item"><b>Nhân viên nhận tiền</b><p>Khoản hỗ trợ đầu tiên tạo niềm tin.</p></div><div class="loop-item"><b>Áp lực tài chính giảm</b><p>Nhân sự cảm nhận giá trị thực tế.</p></div><div class="loop-item"><b>Chia sẻ đồng nghiệp</b><p>Trải nghiệm tốt tạo lan tỏa nội bộ.</p></div><div class="loop-item"><b>Nhiều người tham gia</b><p>Quỹ lớn hơn, giá trị cao hơn.</p></div><div class="loop-item"><b>HR mở rộng</b><p>Chuyển từ pilot sang toàn công ty.</p></div><div class="loop-item"><b>Bán thêm khách hàng mới</b><p>Case thật hỗ trợ bán hàng enterprise.</p></div></div><div class="plan-box" style="text-align:center;font-weight:600;margin-top:18px">Nhân viên nhận tiền → Áp lực tài chính giảm → Chia sẻ đồng nghiệp → Nhiều người tham gia → Quỹ lớn hơn → Giá trị cao hơn → HR mở rộng → Bán thêm khách hàng mới</div></div></div>`,
-en:`<div class="grid"><div class="card span-12"><p class="card-title">🔁 Growth Loop</p><div class="loop"><div class="loop-item"><b>Employees receive money</b><p>The first payout creates trust.</p></div><div class="loop-item"><b>Financial stress drops</b><p>Employees feel real value.</p></div><div class="loop-item"><b>Peer sharing begins</b><p>Good experience spreads internally.</p></div><div class="loop-item"><b>More employees join</b><p>A larger pool creates higher value.</p></div><div class="loop-item"><b>HR expands</b><p>Move from pilot to company-wide rollout.</p></div><div class="loop-item"><b>New customers convert</b><p>Real cases support enterprise sales.</p></div></div><div class="plan-box" style="text-align:center;font-weight:600;margin-top:18px">Employees receive money → Financial stress drops → Peer sharing → More participation → Larger pool → Higher value → HR expands → New customers convert</div></div></div>`
-})},
-{render:()=>({
-vi:`<div class="grid"><div class="card span-6"><p class="card-title">💰 Chiến lược giai đoạn đầu</p><ul class="list-detail"><li>🎁 Miễn phí 2 tháng sử dụng</li></ul></div><div class="card span-6"><p class="card-title">🎯 Triết lý</p><div class="highlight-box">"Giảm rào cản → tăng tham gia → thu tiền sau"</div></div></div>`,
-en:`<div class="grid"><div class="card span-6"><p class="card-title">💰 Early-stage strategy</p><ul class="list-detail"><li>🎁 Free for the first 2 months</li></ul></div><div class="card span-6"><p class="card-title">🎯 Philosophy</p><div class="highlight-box">“Lower friction → increase participation → monetize later.”</div></div></div>`
-})},
-{render:()=>({
-vi:`<div class="grid"><div class="card span-12"><p class="card-title">⚠️ Rủi ro &amp; Giải pháp ứng phó</p><table><thead><tr><th>Vấn đề</th><th>Giải pháp chi tiết</th></tr></thead><tbody><tr><td data-label="Vấn đề"><strong>"Có phải hụi không?"</strong></td><td data-label="Giải pháp">❌ Không dùng từ "hụi". ✅ Dùng: "Chương trình an sinh tài chính nhân viên".</td></tr><tr><td data-label="Vấn đề"><strong>Thiếu niềm tin</strong></td><td data-label="Giải pháp">Hợp tác với ngân hàng và các thương hiệu lớn để bảo chứng.</td></tr><tr><td data-label="Vấn đề"><strong>HR sợ phức tạp</strong></td><td data-label="Giải pháp">Demo rõ: "Tự động 100% – không tăng workload". Chỉ xét duyệt khi có đề xuất ứng sớm.</td></tr></tbody></table></div></div>`,
-en:`<div class="grid"><div class="card span-12"><p class="card-title">⚠️ Risks &amp; Response Plan</p><table><thead><tr><th>Issue</th><th>Detailed response</th></tr></thead><tbody><tr><td data-label="Issue"><strong>“Is this a rotating savings scheme?”</strong></td><td data-label="Response">❌ Do not use the word “hụi”. ✅ Use: “Employee financial wellbeing program.”</td></tr><tr><td data-label="Issue"><strong>Lack of trust</strong></td><td data-label="Response">Partner with banks and major brands for credibility.</td></tr><tr><td data-label="Issue"><strong>HR fears complexity</strong></td><td data-label="Response">Demo clearly: “100% automated — no extra workload.” HR only reviews early-payout exceptions when suggested.</td></tr></tbody></table></div></div>`
-})},
-{render:()=>({
-vi:`<div class="grid"><div class="card span-12"><p class="card-title">🔥 3 Yếu tố bắt buộc để thành công</p><div class="grid"><div class="card span-4"><p class="card-title">1. CEO đồng thuận</p><p class="desc">Nếu không có sự đồng thuận từ cấp cao nhất = Thất bại.</p></div><div class="card span-4"><p class="card-title">2. WOW Experience</p><p class="desc">Trải nghiệm nhận tiền đầu tiên phải thực sự ấn tượng để tạo sự lan tỏa.</p></div><div class="card span-4"><p class="card-title">3. Người dẫn dắt</p><p class="desc">Cần có "Internal Champion" tại doanh nghiệp để thúc đẩy tỷ lệ tham gia.</p></div></div></div></div>`,
-en:`<div class="grid"><div class="card span-12"><p class="card-title">🔥 3 mandatory success factors</p><div class="grid"><div class="card span-4"><p class="card-title">1. CEO alignment</p><p class="desc">Without commitment from the highest level = failure.</p></div><div class="card span-4"><p class="card-title">2. WOW Experience</p><p class="desc">The first payout experience must be truly impressive to create internal spread.</p></div><div class="card span-4"><p class="card-title">3. Internal Champion</p><p class="desc">Each enterprise needs an internal champion to drive participation.</p></div></div></div></div>`
-})},
-{render:()=>({
-vi:`<div class="ads-section"><div class="card span-12"><p class="card-title compact-title">🚀 Nhóm Hook 1 – Gây sốc (Performance Ads)</p><div class="ads-grid"><div class="hook-card"><span class="hook-label">Cho CEO</span><p class="desc">"<span class="kw-highlight">Tăng thu nhập nhân viên</span> mà không tăng chi phí?"</p><p class="desc">"<span class="kw-highlight">Giữ người</span> mà không cần tăng lương – làm được không?"</p><p class="desc">👉 "Biến lương <span class="num-box">12 tháng</span> thành <span class="num-box">13 tháng</span> – không tăng ngân sách"</p></div><div class="hook-card"><span class="hook-label">Cho HRD</span><p class="desc">"Nhân viên <span class="kw-highlight">hết tiền giữa tháng</span> – HR có giải pháp chưa?"</p><p class="desc">"<span class="kw-highlight">Giữ nhân sự</span> mà không cần xin thêm budget?"</p><p class="desc">"<span class="kw-highlight">Tạm ứng lương</span> đang làm HR mất bao nhiêu thời gian?"</p></div></div></div><div class="card span-12"><p class="card-title compact-title">💡 Nhóm Hook 2 – Value Proposition rõ ràng</p><div class="ads-grid"><div class="hook-card"><span class="hook-label">Cho CEO</span><p class="desc">"<span class="kw-highlight">Phúc lợi tài chính</span> <span class="num-box">0%</span> lãi – không dùng vốn công ty"</p><p class="desc">"<span class="kw-highlight">Không rủi ro tài chính</span> – vẫn tăng thu nhập nhân viên"</p><p class="desc">"<span class="kw-highlight">Tối ưu chi trả lương</span>, không cần tăng lương"</p></div><div class="hook-card"><span class="hook-label">Cho HRD</span><p class="desc">"<span class="kw-highlight">HR không cần duyệt</span> – nhân viên vẫn có tiền khi cần"</p><p class="desc">"<span class="kw-highlight">Không thêm việc</span> – vẫn giải quyết bài toán tài chính nhân sự"</p><p class="desc">"<span class="kw-highlight">Tạm ứng lương lỗi thời</span> rồi"</p></div></div><div class="plan-box" style="margin-top:16px">Bạn <span class="kw-highlight">không cần tăng lương</span> để giữ người. Bạn chỉ cần <span class="kw-highlight">trả lương đúng cách</span>.</div></div><div class="card span-12"><p class="card-title compact-title">🧠 Nhóm Hook 3 – Insight-based (LinkedIn)</p><div class="ads-grid"><div class="hook-card"><span class="hook-label">Cho CEO</span><p class="desc">"Nhân sự <span class="kw-highlight">nghỉ việc</span> không phải vì lương thấp – mà vì <span class="kw-highlight">thiếu tiền đúng lúc</span>"</p><p class="desc">"Tăng lương không giải quyết được bài toán <span class="kw-highlight">dòng tiền</span>"</p></div><div class="hook-card"><span class="hook-label">Cho HRD</span><p class="desc">"<span class="num-box">90%</span> <span class="kw-highlight">phúc lợi hiện tại</span> không giải quyết vấn đề lớn nhất: có tiền mặt ngay khi cần"</p><p class="desc">"HR đang <span class="kw-highlight">giải thiếu bài toán tài chính</span> nhân sự"</p></div></div></div></div>`,
-en:`<div class="ads-section"><div class="card span-12"><p class="card-title compact-title">🚀 Hook Group 1 – High-impact Performance Ads</p><div class="ads-grid"><div class="hook-card"><span class="hook-label">For CEO</span><p class="desc">“<span class="kw-highlight">Increase employee income</span> without increasing cost?”</p><p class="desc">“Can you <span class="kw-highlight">retain people</span> without raising salary?”</p><p class="desc">👉 “Turn <span class="num-box">12 months</span> of salary into <span class="num-box">13 months</span> — without increasing budget.”</p></div><div class="hook-card"><span class="hook-label">For HRD</span><p class="desc">“Employees <span class="kw-highlight">run out of money mid-month</span> — does HR have a solution?”</p><p class="desc">“<span class="kw-highlight">Retain employees</span> without asking for more budget?”</p><p class="desc">“How much time is <span class="kw-highlight">salary advance</span> costing HR?”</p></div></div></div><div class="card span-12"><p class="card-title compact-title">💡 Hook Group 2 – Clear Value Proposition</p><div class="ads-grid"><div class="hook-card"><span class="hook-label">For CEO</span><p class="desc">“<span class="kw-highlight">Financial wellness benefit</span> at <span class="num-box">0%</span> interest — without using company capital.”</p><p class="desc">“<span class="kw-highlight">No financial risk</span> — still increase employee income.”</p><p class="desc">“<span class="kw-highlight">Optimize salary payout</span>, no salary increase needed.”</p></div><div class="hook-card"><span class="hook-label">For HRD</span><p class="desc">“<span class="kw-highlight">HR does not need to approve</span> — employees still get money when needed.”</p><p class="desc">“<span class="kw-highlight">No extra work</span> — still solve employee financial stress.”</p><p class="desc">“<span class="kw-highlight">Salary advance is outdated</span>.”</p></div></div><div class="plan-box" style="margin-top:16px">You <span class="kw-highlight">do not need to raise salary</span> to retain people. You need to <span class="kw-highlight">pay salary the smarter way</span>.</div></div><div class="card span-12"><p class="card-title compact-title">🧠 Hook Group 3 – Insight-based (LinkedIn)</p><div class="ads-grid"><div class="hook-card"><span class="hook-label">For CEO</span><p class="desc">“Employees do not <span class="kw-highlight">leave</span> because salary is low — they leave because they <span class="kw-highlight">lack money at the wrong moment</span>.”</p><p class="desc">“Salary increase does not solve the <span class="kw-highlight">cash-flow problem</span>.”</p></div><div class="hook-card"><span class="hook-label">For HRD</span><p class="desc">“<span class="num-box">90%</span> of <span class="kw-highlight">current benefits</span> do not solve the biggest issue: cash when employees need it.”</p><p class="desc">“HR is <span class="kw-highlight">under-solving employee financial stress</span>.”</p></div></div></div></div>`
-})},
-{render:()=>({
-vi:`<div class="grid"><div class="card span-12"><p class="card-title">📝 Format 1 – Storytelling (High Engagement)</p><div class="plan-box"><strong>Opening:</strong> "1 nhân viên nghỉ việc vì thiếu <span class="num-box">20 triệu</span>, không phải vì lương thấp."<br><br><strong>Body:</strong><ul class="list-detail"><li>Vấn đề là <span class="kw-highlight">thiếu tiền ngắn hạn</span></li><li>HR không có <span class="kw-highlight">công cụ phù hợp</span></li><li>Doanh nghiệp đang <span class="kw-highlight">giải sai bài toán</span></li></ul><strong>Close:</strong> 👉 "Có cách <span class="kw-highlight">tăng thu nhập</span> mà không tăng chi phí"</div></div><div class="card span-6"><p class="card-title">🎯 Format 2 – Insight cho lãnh đạo</p><p class="desc">👉 "<span class="num-box">3 điều</span> CEO đang hiểu thiếu về <span class="kw-highlight">phúc lợi tài chính</span>"</p><ul class="list-detail"><li>Tăng lương ≠ giải quyết vấn đề</li><li>Tạm ứng lương = giải pháp tạm thời</li><li>Nhân sự cần tiền đúng lúc, không chỉ lương cao</li></ul></div><div class="card span-6"><p class="card-title">📊 Format 3 – Case giả lập</p><div class="highlight-box" style="text-align:center;padding:30px 18px"><span style="font-size:1rem;font-weight:750;color:var(--accent)">"<span class="num-box">12 nhân viên</span> → tạo quỹ → mỗi người nhận giá trị <span class="kw-highlight">gấp nhiều lần</span>"</span><p class="desc" style="margin-top:12px;font-style:italic">(Yêu cầu sử dụng Visual minh họa dòng tiền luân chuyển)</p></div></div><div class="card span-12 soft-blue"><p class="card-title">📝 APPLY FORM (Form đăng ký demo / pilot)</p><div class="grid"><div class="card span-6"><strong>Title:</strong> 👉 "Đăng ký <span class="kw-highlight">sử dụng thử ngay</span> – không rủi ro"<br><br><strong>Giới thiệu ngắn:</strong><ul class="list-detail"><li>Triển khai trong <span class="num-box">2 tuần</span></li><li>Không cần thay đổi hệ thống</li><li>Không phát sinh chi phí cố định</li></ul></div><div class="card span-6"><strong>Các trường thông tin:</strong><ul class="list-detail"><li>Quy mô nhân sự</li><li>Ngành</li><li>Vấn đề chính: <span class="tag blue">Giữ người</span> <span class="tag blue">Nhân viên thiếu tiền</span> <span class="tag blue">HR quá tải</span></li></ul><div class="plan-box dark-card" style="text-align:center;border:none">👉 "Nhận đề xuất phù hợp trong 24h"</div></div></div></div></div>`,
-en:`<div class="grid"><div class="card span-12"><p class="card-title">📝 Format 1 – Storytelling (High Engagement)</p><div class="plan-box"><strong>Opening:</strong> “1 employee left because they were short of <span class="num-box">VND 20 million</span>, not because salary was low.”<br><br><strong>Body:</strong><ul class="list-detail"><li>The issue is <span class="kw-highlight">short-term cash shortage</span></li><li>HR does not have the <span class="kw-highlight">right tool</span></li><li>Enterprises are <span class="kw-highlight">solving the wrong problem</span></li></ul><strong>Close:</strong> 👉 “There is a way to <span class="kw-highlight">increase income</span> without increasing cost.”</div></div><div class="card span-6"><p class="card-title">🎯 Format 2 – Leadership Insight</p><p class="desc">👉 “<span class="num-box">3 things</span> CEOs are missing about <span class="kw-highlight">financial wellness</span>.”</p><ul class="list-detail"><li>Salary increase ≠ solving the problem</li><li>Salary advance = temporary fix</li><li>Employees need money on time, not only higher salary</li></ul></div><div class="card span-6"><p class="card-title">📊 Format 3 – Simulated Case</p><div class="highlight-box" style="text-align:center;padding:30px 18px"><span style="font-size:1rem;font-weight:750;color:var(--accent)">“<span class="num-box">12 employees</span> → create a pool → each receives <span class="kw-highlight">multiple-times value</span>.”</span><p class="desc" style="margin-top:12px;font-style:italic">(Use a visual to illustrate circulating cash flow.)</p></div></div><div class="card span-12 soft-blue"><p class="card-title">📝 APPLY FORM (Demo / Pilot Registration Form)</p><div class="grid"><div class="card span-6"><strong>Title:</strong> 👉 “Register to <span class="kw-highlight">try now</span> — no risk.”<br><br><strong>Short intro:</strong><ul class="list-detail"><li>Deploy in <span class="num-box">2 weeks</span></li><li>No system change required</li><li>No fixed cost incurred</li></ul></div><div class="card span-6"><strong>Information fields:</strong><ul class="list-detail"><li>Workforce size</li><li>Industry</li><li>Main issue: <span class="tag blue">Retention</span> <span class="tag blue">Employees short of cash</span> <span class="tag blue">HR overloaded</span></li></ul><div class="plan-box dark-card" style="text-align:center;border:none">👉 “Receive a tailored proposal within 24h.”</div></div></div></div></div>`
-})},
-{render:()=>({
-vi:`<div class="grid"><div class="card span-12 soft-blue"><p class="card-title">🏗️ Mô hình kiến trúc hai tầng — VRDDI × Việt Nam</p><p class="desc">Vrddi vận hành theo mô hình <strong>Dual-Layer</strong>: nền tảng lõi được phát triển và vận hành tại <strong>Ấn Độ</strong>, đảm bảo sự ổn định, bảo mật và khả năng mở rộng. Phía trên là <strong>lớp bản địa hóa dành riêng cho Việt Nam</strong> — xử lý toàn bộ yêu cầu pháp lý, tích hợp HR và trải nghiệm người dùng cục bộ. Đây chính là nơi Vrddi VN chủ động tạo ra doanh thu và chiếm lĩnh thị trường.</p></div>${arch('vi')}<div class="card span-12 dark-card"><p class="card-title">💡 Message to India team</p><div class="grid"><div class="card span-4" style="background:rgba(255,255,255,.10);box-shadow:none;border-color:rgba(255,255,255,.16)"><p class="quote small">🛡️ Không phải xây lại từ đầu</p><p class="desc">Hạ tầng lõi đã sẵn sàng và được kiểm chứng tại Ấn Độ — Vrddi VN tập trung 100% nguồn lực vào bản địa hóa và bán hàng.</p></div><div class="card span-4" style="background:rgba(255,255,255,.10);box-shadow:none;border-color:rgba(255,255,255,.16)"><p class="quote small">⚡ Triển khai nhanh</p><p class="desc">Chỉ cần kết nối HR connector và cấu hình policy — có thể go-live trong vòng <strong>2 tuần</strong> cho mỗi khách hàng.</p></div><div class="card span-4" style="background:rgba(255,255,255,.10);box-shadow:none;border-color:rgba(255,255,255,.16)"><p class="quote small">🇻🇳 Vrddi VN sở hữu thị trường</p><p class="desc">Layer 2 &amp; 3 hoàn toàn do đội ngũ Việt Nam làm chủ — compliance, UX và doanh thu đều nằm trong tay chúng ta.</p></div></div></div></div>`,
-en:`<div class="grid"><div class="card span-12 soft-blue"><p class="card-title">🏗️ Dual-layer architecture — VRDDI × Vietnam</p><p class="desc">Vrddi operates on a <strong>Dual-Layer</strong> model: the core platform is developed and operated in <strong>India</strong>, ensuring stability, security and scalability. On top is a <strong>Vietnam-specific localization layer</strong> that handles legal requirements, HR integration and local user experience. This is where Vrddi VN proactively creates revenue and captures the market.</p></div>${arch('en')}<div class="card span-12 dark-card"><p class="card-title">💡 Message to India team</p><div class="grid"><div class="card span-4" style="background:rgba(255,255,255,.10);box-shadow:none;border-color:rgba(255,255,255,.16)"><p class="quote small">🛡️ No need to rebuild from scratch</p><p class="desc">The core infrastructure is ready and validated in India — Vrddi VN focuses 100% of resources on localization and sales.</p></div><div class="card span-4" style="background:rgba(255,255,255,.10);box-shadow:none;border-color:rgba(255,255,255,.16)"><p class="quote small">⚡ Fast deployment</p><p class="desc">With HR connector integration and policy configuration, each customer can go live within <strong>2 weeks</strong>.</p></div><div class="card span-4" style="background:rgba(255,255,255,.10);box-shadow:none;border-color:rgba(255,255,255,.16)"><p class="quote small">🇻🇳 Vrddi VN owns the market</p><p class="desc">Layers 2 &amp; 3 are fully owned by the Vietnam team — compliance, UX and revenue are in our hands.</p></div></div></div></div>`
-})},
-{render:()=>({vi:"<div class=\"grid\">\n  <div class=\"card span-12 soft-blue\">\n    <p class=\"card-title\">🔁 Enterprise Growth Loop</p>\n    <p class=\"lead\">Vrddi bắt đầu như một phúc lợi giữ chân nhân sự. Khi triển khai đủ rộng, nền tảng trở thành lớp dữ liệu giúp doanh nghiệp hiểu, dự báo và cải thiện sự ổn định lực lượng lao động.</p>\n  </div>\n\n  <div class=\"card span-3 soft-blue\"><p class=\"card-title\">0 → 10 doanh nghiệp</p><p class=\"quote small\">Chuẩn hóa triển khai</p><p class=\"desc\">Xây quy trình, tài liệu và bộ đo lường cho các pilot đầu tiên.</p></div>\n  <div class=\"card span-3 soft-blue\"><p class=\"card-title\">10 → 30 doanh nghiệp</p><p class=\"quote small\">Tích lũy dữ liệu</p><p class=\"desc\">Thu thập tín hiệu hành vi tài chính và nhân sự theo từng ngành.</p></div>\n  <div class=\"card span-3 soft-blue\"><p class=\"card-title\">30 → 100 doanh nghiệp</p><p class=\"quote small\">Dự báo giữ chân</p><p class=\"desc\">Xây mô hình cảnh báo rủi ro nghỉ việc theo phòng ban, chi nhánh.</p></div>\n  <div class=\"card span-3 soft-blue\"><p class=\"card-title\">100+ doanh nghiệp</p><p class=\"quote small\">Chuẩn ngành</p><p class=\"desc\">Mở rộng thành lớp thông tin lực lượng lao động cho Việt Nam và ASEAN.</p></div>\n\n  <div class=\"card span-12\">\n    <p class=\"card-title\">A. Vòng quay tăng trưởng doanh nghiệp</p>\n    <div class=\"loop\">\n      <div class=\"loop-item\"><b>Triển khai</b><p>Pilot nhỏ: 1 chi nhánh, 1 phòng ban, 200–500 nhân viên.</p></div>\n      <div class=\"loop-item\"><b>Tích lũy dữ liệu</b><p>Tỷ lệ tham gia, nhu cầu nhận tiền, dấu hiệu áp lực tài chính.</p></div>\n      <div class=\"loop-item\"><b>Dự báo rủi ro</b><p>Nhận diện nhóm, chi nhánh hoặc đội ngũ có nguy cơ thiếu ổn định.</p></div>\n      <div class=\"loop-item\"><b>Khuyến nghị giữ chân</b><p>Đề xuất hành động đúng nhóm, đúng thời điểm.</p></div>\n      <div class=\"loop-item\"><b>Lãnh đạo sử dụng</b><p>CEO, HRD, CFO dùng bảng điều khiển để ra quyết định.</p></div>\n      <div class=\"loop-item\"><b>Mở rộng nội bộ</b><p>Từ pilot sang toàn công ty, công ty con và đơn vị kinh doanh.</p></div>\n      <div class=\"loop-item\"><b>Chuẩn ngành</b><p>Tạo benchmark theo ngành, quy mô và nhóm nhân sự.</p></div>\n    </div>\n  </div>\n\n  <div class=\"card span-12\">\n    <p class=\"card-title\">B. Vòng lặp niềm tin khi bán cho doanh nghiệp</p>\n    <div class=\"ads-grid\">\n      <div class=\"hook-card\"><span class=\"hook-label\">1. Chọn đúng KH mục tiêu</span><p class=\"desc\">Không chạy đại trà. Tập trung 50–100 doanh nghiệp có áp lực giữ người rõ ràng.</p></div>\n      <div class=\"hook-card\"><span class=\"hook-label\">2. Pilot gọn</span><p class=\"desc\">Triển khai quy mô nhỏ, nhanh, ít rủi ro và có ROI cụ thể.</p></div>\n      <div class=\"hook-card\"><span class=\"hook-label\">3. Sản phẩm hóa pilot</span><p class=\"desc\">Mỗi pilot thành công tạo thành case study, báo cáo hiệu quả và playbook.</p></div>\n      <div class=\"hook-card\"><span class=\"hook-label\">4. Mở rộng nội bộ</span><p class=\"desc\">Ưu tiên mở rộng trong khách hàng hiện hữu trước khi săn khách hàng mới.</p></div>\n      <div class=\"hook-card\"><span class=\"hook-label\">5. Benchmark & giới thiệu</span><p class=\"desc\">Dùng dữ liệu thật để tạo báo cáo ngành và thu hút cộng đồng HRD.</p></div>\n    </div>\n  </div>\n\n  <div class=\"card span-12\">\n    <p class=\"card-title\">C. Giai đoạn tăng trưởng — mục tiêu & chỉ số chính</p>\n    <table>\n      <thead><tr><th>Giai đoạn</th><th>Mục tiêu</th><th>Trọng tâm</th><th>Chỉ số chính</th></tr></thead>\n      <tbody>\n        <tr><td data-label=\"Giai đoạn\">0 → 10 doanh nghiệp</td><td data-label=\"Mục tiêu\">Xây bộ máy triển khai</td><td data-label=\"Trọng tâm\">Onboarding, tích hợp nhân sự, bộ truyền thông nội bộ</td><td data-label=\"Chỉ số chính\">Thời gian go-live, tỷ lệ tham gia</td></tr>\n        <tr><td data-label=\"Giai đoạn\">10 → 30 doanh nghiệp</td><td data-label=\"Mục tiêu\">Tích lũy tín hiệu</td><td data-label=\"Trọng tâm\">Chuẩn hóa dữ liệu và học theo từng ngành</td><td data-label=\"Chỉ số chính\">Độ phủ dữ liệu, số case study</td></tr>\n        <tr><td data-label=\"Giai đoạn\">30 → 100 doanh nghiệp</td><td data-label=\"Mục tiêu\">Tạo lớp dự báo</td><td data-label=\"Trọng tâm\">Điểm ổn định nhân sự, cảnh báo rủi ro</td><td data-label=\"Chỉ số chính\">Độ chính xác dự báo, cải thiện giữ chân</td></tr>\n        <tr><td data-label=\"Giai đoạn\">100+ doanh nghiệp</td><td data-label=\"Mục tiêu\">Mở rộng chuẩn ngành</td><td data-label=\"Trọng tâm\">Benchmark ngành, báo cáo thị trường, mở rộng ASEAN</td><td data-label=\"Chỉ số chính\">Doanh thu mở rộng, số benchmark</td></tr>\n      </tbody>\n    </table>\n  </div>\n\n  <div class=\"card span-12 dark-card\">\n    <p class=\"card-title\">Điểm nhấn chiến lược</p>\n    <p class=\"quote small\">Pilot không chỉ để bán hàng. Pilot là cách Vrddi tích lũy dữ liệu, bằng chứng, niềm tin và khả năng mở rộng.</p>\n  </div>\n</div>",en:"<div class=\"grid\">\n  <div class=\"card span-12 soft-blue\">\n    <p class=\"card-title\">🔁 Enterprise Growth Loop</p>\n    <p class=\"lead\">Vrddi starts as an employee-retention benefit. At scale, it becomes a data layer that helps enterprises understand, predict and improve workforce stability.</p>\n  </div>\n\n  <div class=\"card span-3 soft-blue\"><p class=\"card-title\">0 → 10 enterprises</p><p class=\"quote small\">Standardize deployment</p><p class=\"desc\">Build the process, materials and metrics for the first pilots.</p></div>\n  <div class=\"card span-3 soft-blue\"><p class=\"card-title\">10 → 30 enterprises</p><p class=\"quote small\">Accumulate data</p><p class=\"desc\">Collect financial-behavior and workforce signals by industry.</p></div>\n  <div class=\"card span-3 soft-blue\"><p class=\"card-title\">30 → 100 enterprises</p><p class=\"quote small\">Predict retention risk</p><p class=\"desc\">Build early-warning models by department, branch and employee group.</p></div>\n  <div class=\"card span-3 soft-blue\"><p class=\"card-title\">100+ enterprises</p><p class=\"quote small\">Create benchmarks</p><p class=\"desc\">Expand into a workforce-intelligence layer for Vietnam and ASEAN.</p></div>\n\n  <div class=\"card span-12\">\n    <p class=\"card-title\">A. Enterprise growth loop</p>\n    <div class=\"loop\">\n      <div class=\"loop-item\"><b>Deploy</b><p>Small pilot: one branch, one department, 200–500 employees.</p></div>\n      <div class=\"loop-item\"><b>Accumulate data</b><p>Participation, payout needs and financial-stress signals.</p></div>\n      <div class=\"loop-item\"><b>Predict risk</b><p>Identify unstable teams, branches or workforce groups.</p></div>\n      <div class=\"loop-item\"><b>Recommend retention actions</b><p>Suggest the right action for the right group at the right time.</p></div>\n      <div class=\"loop-item\"><b>Executive usage</b><p>CEO, HRD and CFO use the dashboard for decisions.</p></div>\n      <div class=\"loop-item\"><b>Expand internally</b><p>Move from pilot to company-wide, subsidiaries and business units.</p></div>\n      <div class=\"loop-item\"><b>Build benchmarks</b><p>Create benchmarks by industry, company size and employee group.</p></div>\n    </div>\n  </div>\n\n  <div class=\"card span-12\">\n    <p class=\"card-title\">B. Enterprise trust growth loop</p>\n    <div class=\"ads-grid\">\n      <div class=\"hook-card\"><span class=\"hook-label\">1. Selective accounts</span><p class=\"desc\">Do not run broad lead generation. Focus on 50–100 enterprises with clear retention pressure.</p></div>\n      <div class=\"hook-card\"><span class=\"hook-label\">2. Lean pilot</span><p class=\"desc\">Start small, fast, low-risk and measurable.</p></div>\n      <div class=\"hook-card\"><span class=\"hook-label\">3. Productize pilot success</span><p class=\"desc\">Turn every successful pilot into a case study, impact report and playbook.</p></div>\n      <div class=\"hook-card\"><span class=\"hook-label\">4. Expand inside accounts</span><p class=\"desc\">Prioritize expansion within existing customers before chasing new logos.</p></div>\n      <div class=\"hook-card\"><span class=\"hook-label\">5. Benchmark & referral</span><p class=\"desc\">Use real data to create industry reports and attract the HRD community.</p></div>\n    </div>\n  </div>\n\n  <div class=\"card span-12\">\n    <p class=\"card-title\">C. Growth stages — goals & key metrics</p>\n    <table>\n      <thead><tr><th>Stage</th><th>Goal</th><th>Focus</th><th>Key metrics</th></tr></thead>\n      <tbody>\n        <tr><td data-label=\"Stage\">0 → 10 enterprises</td><td data-label=\"Goal\">Build the deployment engine</td><td data-label=\"Focus\">Onboarding, HR integration, internal communications</td><td data-label=\"Key metrics\">Go-live time, participation rate</td></tr>\n        <tr><td data-label=\"Stage\">10 → 30 enterprises</td><td data-label=\"Goal\">Accumulate signals</td><td data-label=\"Focus\">Data standardization and industry learning</td><td data-label=\"Key metrics\">Data coverage, case studies</td></tr>\n        <tr><td data-label=\"Stage\">30 → 100 enterprises</td><td data-label=\"Goal\">Create prediction layer</td><td data-label=\"Focus\">Workforce stability score and risk alerts</td><td data-label=\"Key metrics\">Prediction accuracy, retention improvement</td></tr>\n        <tr><td data-label=\"Stage\">100+ enterprises</td><td data-label=\"Goal\">Scale benchmarks</td><td data-label=\"Focus\">Industry benchmarks, market reports, ASEAN expansion</td><td data-label=\"Key metrics\">Expansion revenue, benchmark coverage</td></tr>\n      </tbody>\n    </table>\n  </div>\n\n  <div class=\"card span-12 dark-card\">\n    <p class=\"card-title\">Strategic highlight</p>\n    <p class=\"quote small\">A pilot is not just a sales motion. It is how Vrddi compounds data, proof, trust and expansion capability.</p>\n  </div>\n</div>"})},
-{render:()=>({vi:"<div class=\"grid\">\n  <div class=\"card span-12 soft-blue\">\n    <p class=\"card-title\">🛡️ Lợi thế cạnh tranh</p>\n    <p class=\"lead\">Lợi thế thật của Vrddi không nằm ở việc có thể làm một ứng dụng tương tự. Lợi thế nằm ở dữ liệu hành vi, niềm tin doanh nghiệp, năng lực triển khai lặp lại và benchmark liên doanh nghiệp.</p>\n  </div>\n\n  <div class=\"card span-12\">\n    <p class=\"card-title\">A. Lớp lợi thế cạnh tranh cần xây</p>\n    <div class=\"ads-grid\">\n      <div class=\"hook-card\"><span class=\"hook-label\">1. Quan hệ doanh nghiệp</span><p class=\"desc\">Niềm tin cấp lãnh đạo, mạng lưới HRD và các hợp đồng đã ký.</p></div>\n      <div class=\"hook-card\"><span class=\"hook-label\">2. Bộ máy triển khai</span><p class=\"desc\">Tích hợp HR, playbook theo ngành, bộ truyền thông và quy trình go-live.</p></div>\n      <div class=\"hook-card\"><span class=\"hook-label\">3. Dữ liệu hành vi</span><p class=\"desc\">Tín hiệu tham gia, nhận tiền, áp lực tài chính và tương quan với nghỉ việc.</p></div>\n      <div class=\"hook-card\"><span class=\"hook-label\">4. Lớp phân tích</span><p class=\"desc\">Điểm ổn định nhân sự, phân nhóm rủi ro và khuyến nghị giữ chân.</p></div>\n      <div class=\"hook-card\"><span class=\"hook-label\">5. Benchmark liên doanh nghiệp</span><p class=\"desc\">So sánh theo ngành, quy mô, thâm niên và nhóm lao động.</p></div>\n      <div class=\"hook-card\"><span class=\"hook-label\">6. Khả năng mở rộng ASEAN</span><p class=\"desc\">Mô hình vào thị trường có thể nhân rộng từ Việt Nam sang khu vực.</p></div>\n    </div>\n  </div>\n\n  <div class=\"card span-12\">\n    <p class=\"card-title\">B. Cách xây lợi thế dữ liệu</p>\n    <div class=\"loop\">\n      <div class=\"loop-item\"><b>Chuẩn hóa dữ liệu</b><p>Định nghĩa trường dữ liệu tối thiểu cho mọi khách hàng.</p></div>\n      <div class=\"loop-item\"><b>Xây thư viện tín hiệu</b><p>Tín hiệu theo ngành: bán lẻ, ngân hàng, BPO, y tế.</p></div>\n      <div class=\"loop-item\"><b>So sánh liên doanh nghiệp</b><p>Tạo benchmark khi có từ 10+ doanh nghiệp.</p></div>\n      <div class=\"loop-item\"><b>Dự báo</b><p>Xây điểm ổn định theo nhân viên, đội nhóm, chi nhánh.</p></div>\n      <div class=\"loop-item\"><b>Trí tuệ Việt Nam</b><p>Ấn Độ là hệ thống ghi nhận; Việt Nam xây lớp phân tích.</p></div>\n    </div>\n  </div>\n\n  <div class=\"card span-12\">\n    <p class=\"card-title\">C. Vì sao đối thủ khó sao chép</p>\n    <table>\n      <thead><tr><th>Đối thủ / rủi ro</th><th>Có thể làm</th><th>Khó sao chép</th><th>Việc Vrddi cần làm</th></tr></thead>\n      <tbody>\n        <tr><td data-label=\"Đối thủ / rủi ro\">Công nghệ nội bộ doanh nghiệp</td><td data-label=\"Có thể làm\">Ứng dụng nội bộ, bảng điều khiển riêng</td><td data-label=\"Khó sao chép\">Benchmark liên doanh nghiệp, mô hình hành vi, dữ liệu chuẩn ngành</td><td data-label=\"Việc Vrddi cần làm\">Nhanh đạt 10+ doanh nghiệp để tạo Network Effect</td></tr>\n        <tr><td data-label=\"Đối thủ / rủi ro\">Startup mới</td><td data-label=\"Có thể làm\">Ứng dụng tương tự, tích hợp lương</td><td data-label=\"Khó sao chép\">Lớp dữ liệu mạng lưới và benchmark ngành</td><td data-label=\"Việc Vrddi cần làm\">Tăng tốc lên 30+ doanh nghiệp</td></tr>\n        <tr><td data-label=\"Đối thủ / rủi ro\">Nhà cung cấp HRIS</td><td data-label=\"Có thể làm\">Tích hợp sâu dữ liệu nhân sự</td><td data-label=\"Khó sao chép\">Phân tích hành vi tài chính và giữ chân nhân sự</td><td data-label=\"Việc Vrddi cần làm\">Hợp tác trước khi họ cạnh tranh</td></tr>\n        <tr><td data-label=\"Đối thủ / rủi ro\">Nền tảng Ấn Độ bán trực tiếp</td><td data-label=\"Có thể làm\">Nền tảng lõi và bản địa hóa cơ bản</td><td data-label=\"Khó sao chép\">Quan hệ doanh nghiệp, niềm tin địa phương, playbook Việt Nam</td><td data-label=\"Việc Vrddi cần làm\">Việt Nam phải sở hữu quan hệ khách hàng doanh nghiệp</td></tr>\n      </tbody>\n    </table>\n  </div>\n\n  <div class=\"card span-6\">\n    <p class=\"card-title\">D. Tiến hóa mô hình giá</p>\n    <ul class=\"list-detail\"><li><strong>Giai đoạn đầu:</strong> Phần mềm theo người dùng — dễ bán, dễ thử.</li><li><strong>Giai đoạn giữa:</strong> Gói lõi + phân tích nghỉ việc, benchmark, điểm ổn định.</li><li><strong>Dài hạn:</strong> Nền tảng + lớp phân tích + benchmark giữ chân nhân sự.</li></ul>\n  </div>\n  <div class=\"card span-6\">\n    <p class=\"card-title\">E. 4 tài sản chiến lược</p>\n    <ul class=\"list-detail\"><li>Quan hệ doanh nghiệp và hợp đồng.</li><li>Bộ máy triển khai có thể lặp lại.</li><li>Dữ liệu thông minh về lực lượng lao động.</li><li>Năng lực mở rộng sang ASEAN.</li></ul>\n  </div>\n\n  <div class=\"card span-12 dark-card\">\n    <p class=\"card-title\">Điểm nhấn chiến lược</p>\n    <p class=\"quote small\">Ứng dụng có thể bị sao chép, nhưng Network Effect, benchmark ngành và niềm tin doanh nghiệp thì không.</p>\n  </div>\n</div>",en:"<div class=\"grid\">\n  <div class=\"card span-12 soft-blue\">\n    <p class=\"card-title\">🛡️ Competitive Advantage (Moat)</p>\n    <p class=\"lead\">Vrddi’s real moat is not the ability to build an app. It is behavioral data, enterprise trust, repeatable deployment capability and cross-company benchmarks.</p>\n  </div>\n\n  <div class=\"card span-12\">\n    <p class=\"card-title\">A. Moat layers to build</p>\n    <div class=\"ads-grid\">\n      <div class=\"hook-card\"><span class=\"hook-label\">1. Enterprise relationships</span><p class=\"desc\">C-level trust, HRD network and signed enterprise contracts.</p></div>\n      <div class=\"hook-card\"><span class=\"hook-label\">2. Deployment engine</span><p class=\"desc\">HR integration, industry playbooks, communication kits and go-live process.</p></div>\n      <div class=\"hook-card\"><span class=\"hook-label\">3. Behavioral data</span><p class=\"desc\">Participation, payout, financial-stress and attrition-correlation signals.</p></div>\n      <div class=\"hook-card\"><span class=\"hook-label\">4. Intelligence layer</span><p class=\"desc\">Workforce stability score, risk segmentation and retention recommendations.</p></div>\n      <div class=\"hook-card\"><span class=\"hook-label\">5. Cross-company benchmark</span><p class=\"desc\">Comparisons by industry, company size, tenure and workforce group.</p></div>\n      <div class=\"hook-card\"><span class=\"hook-label\">6. ASEAN expansion capability</span><p class=\"desc\">A repeatable market-entry model from Vietnam to the region.</p></div>\n    </div>\n  </div>\n\n  <div class=\"card span-12\">\n    <p class=\"card-title\">B. How to build the data moat</p>\n    <div class=\"loop\">\n      <div class=\"loop-item\"><b>Standardize data</b><p>Define the minimum data fields for every customer.</p></div>\n      <div class=\"loop-item\"><b>Build signal library</b><p>Signals by industry: retail, banking, BPO, healthcare.</p></div>\n      <div class=\"loop-item\"><b>Cross-company benchmark</b><p>Create benchmarks once there are 10+ enterprises.</p></div>\n      <div class=\"loop-item\"><b>Predictive models</b><p>Build stability scores by employee, team and branch.</p></div>\n      <div class=\"loop-item\"><b>Vietnam intelligence layer</b><p>India is the system of record; Vietnam builds the intelligence layer.</p></div>\n    </div>\n  </div>\n\n  <div class=\"card span-12\">\n    <p class=\"card-title\">C. Why competitors cannot copy easily</p>\n    <table>\n      <thead><tr><th>Competitor / risk</th><th>What they can build</th><th>What is hard to copy</th><th>What Vrddi must do</th></tr></thead>\n      <tbody>\n        <tr><td data-label=\"Competitor / risk\">Enterprise internal IT</td><td data-label=\"What they can build\">Internal app, custom dashboard</td><td data-label=\"What is hard to copy\">Cross-company benchmark, behavioral models, industry data</td><td data-label=\"What Vrddi must do\">Reach 10+ enterprises quickly to create the data network</td></tr>\n        <tr><td data-label=\"Competitor / risk\">New startup</td><td data-label=\"What they can build\">Similar app, payroll integration</td><td data-label=\"What is hard to copy\">Network intelligence and industry benchmarks</td><td data-label=\"What Vrddi must do\">Accelerate to 30+ enterprises</td></tr>\n        <tr><td data-label=\"Competitor / risk\">HRIS vendors</td><td data-label=\"What they can build\">Deeper HR-data integration</td><td data-label=\"What is hard to copy\">Financial-behavior and retention intelligence</td><td data-label=\"What Vrddi must do\">Partner before they compete</td></tr>\n        <tr><td data-label=\"Competitor / risk\">India platform selling directly</td><td data-label=\"What they can build\">Core platform and basic localization</td><td data-label=\"What is hard to copy\">Enterprise relationships, local trust, Vietnam playbook</td><td data-label=\"What Vrddi must do\">Vietnam must own enterprise customer relationships</td></tr>\n      </tbody>\n    </table>\n  </div>\n\n  <div class=\"card span-6\">\n    <p class=\"card-title\">D. Pricing evolution</p>\n    <ul class=\"list-detail\"><li><strong>Early stage:</strong> Per-user software — simple to pitch and trial.</li><li><strong>Mid stage:</strong> Core package + churn analytics, benchmark and stability score.</li><li><strong>Long term:</strong> Platform + intelligence layer + retention benchmarks.</li></ul>\n  </div>\n  <div class=\"card span-6\">\n    <p class=\"card-title\">E. 4 strategic assets</p>\n    <ul class=\"list-detail\"><li>Enterprise relationships and contracts.</li><li>Repeatable deployment engine.</li><li>Workforce intelligence data.</li><li>ASEAN expansion capability.</li></ul>\n  </div>\n\n  <div class=\"card span-12 dark-card\">\n    <p class=\"card-title\">Strategic highlight</p>\n    <p class=\"quote small\">An app can be copied. A data network, industry benchmarks and enterprise trust cannot be copied quickly.</p>\n  </div>\n</div>"})}];
-function arch(lang){
- const yes=lang==='vi'?'Có':'Yes', no=lang==='vi'?'Không':'No';
- const labels=lang==='vi'?['Thành phần','India Core','VN Local','Ghi chú']:['Component','India Core','VN Local','Note'];
- const rows1=lang==='vi' ? [['🔐 Xác thực & Bảo mật',yes,no,'Nền tảng "hệ điều hành" của toàn platform'],['💼 Wallet Engine',yes,no,'Quản lý ví điện tử nhân viên'],['💳 Transaction Engine',yes,no,'Xử lý toàn bộ giao dịch tài chính'],['📊 Fund Allocation / Vesting Engine',yes,no,'Phân bổ & lập lịch giải ngân tự động'],['🔌 API Gateway',yes,no,'Cổng kết nối tất cả module'],['📋 Audit Log / Analytics Infra',yes,no,'Nhật ký kiểm toán & hạ tầng phân tích dữ liệu'],['🔔 Notification Infra',yes,no,'Hạ tầng thông báo đa kênh']] : [['🔐 Authentication & Security',yes,no,'The operating foundation of the full platform'],['💼 Wallet Engine',yes,no,'Manages employee e-wallet logic'],['💳 Transaction Engine',yes,no,'Processes all financial transactions'],['📊 Fund Allocation / Vesting Engine',yes,no,'Automated allocation and payout scheduling'],['🔌 API Gateway',yes,no,'Gateway connecting all modules'],['📋 Audit Log / Analytics Infra',yes,no,'Audit trail and data analytics infrastructure'],['🔔 Notification Infra',yes,no,'Multi-channel notification infrastructure']];
- const rows2=lang==='vi' ? [['🔗 HR Connectors',no,yes,'SAP, Odoo, MISA, Base HRM, Fast, Bravo, Workday…'],['⚙️ Enterprise Policy Engine',no,yes,'Vesting · Retention · Điều kiện tham gia. Vrddi VN phải chủ sở hữu hoàn toàn module này'],['⚖️ Tuân thủ pháp lý VN',no,yes,'PDPA VN · Luật Lao động · Luồng đồng ý'],['📱 Giao diện Việt Nam',no,yes,'App Nhân viên + HR Dashboard. Ưu tiên xây dựng niềm tin: dùng “quyền lợi”, “phúc lợi” thay vì “wallet”']] : [['🔗 HR Connectors',no,yes,'SAP, Odoo, MISA, Base HRM, Fast, Bravo, Workday…'],['⚙️ Enterprise Policy Engine',no,yes,'Vesting · Retention · Eligibility. Vrddi VN must fully own this module'],['⚖️ Vietnam legal compliance',no,yes,'Vietnam PDPA · Labor Code · Consent flows'],['📱 Vietnam interface',no,yes,'Employee App + HR Dashboard. Prioritize trust-building language: use “benefits” and “wellbeing” instead of “wallet”']];
- const rows3=lang==='vi' ? [['🚀 Triển khai & Onboarding Doanh nghiệp',no,yes,'Đây là nơi doanh nghiệp trả tiền — trực tiếp tạo ra doanh thu'],['🔧 Hỗ trợ Tích hợp & Luồng nghiệp vụ tùy chỉnh',no,yes,'Tùy biến quy trình theo yêu cầu đặc thù của từng khách hàng doanh nghiệp'],['📈 Báo cáo / Đo lường hiệu quả / Tối ưu Pilot',no,yes,'Cung cấp số liệu minh chứng ROI, hỗ trợ mở rộng sau pilot']] : [['🚀 Enterprise deployment & onboarding',no,yes,'This is where enterprises pay — directly creating revenue'],['🔧 Integration support & custom workflows',no,yes,'Customize workflows for each enterprise customer’s specific requirements'],['📈 Reporting / Impact measurement / Pilot optimization',no,yes,'Provide ROI evidence and support expansion after pilot']];
- return `<div class="card span-12"><div class="arch">${archSection(lang==='vi'?'🔵 Layer 1 — Hạ tầng lõi (Ấn Độ) | Mục tiêu: Ổn định · Bảo mật · Có khả năng mở rộng':'🔵 Layer 1 — Core Infrastructure (India) | Goal: Stability · Security · Scalability','blue',labels,rows1,lang)}${archSection(lang==='vi'?'🔵 Layer 2 — Bản địa hóa (Việt Nam) | Mục tiêu: Phù hợp thị trường & Tuân thủ pháp lý':'🔵 Layer 2 — Localization (Vietnam) | Goal: Market fit & legal compliance','blue',labels,rows2,lang)}${archSection(lang==='vi'?'🟠 Layer 3 — Giải pháp Doanh nghiệp (Việt Nam) | Mục tiêu: Tạo doanh thu':'🟠 Layer 3 — Enterprise Solutions (Vietnam) | Goal: Revenue creation','amber',labels,rows3,lang)}</div></div>`;
+function setLanguage(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('.lang-toggle button').forEach(btn => btn.classList.remove('active'));
+  const activeBtn = document.getElementById(lang === 'vi' ? 'langVi' : 'langEn');
+  if(activeBtn) activeBtn.classList.add('active');
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) {
+      if(!node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+      const parent = node.parentElement;
+      if(!parent || parent.closest('script,style')) return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  });
+  const nodes = [];
+  while(walker.nextNode()) nodes.push(walker.currentNode);
+  nodes.forEach(node => {
+    if(!node.__viText) node.__viText = node.nodeValue.trim().replace(/\s+/g,' ');
+    const key = node.__viText;
+    const leading = (node.nodeValue.match(/^\s*/) || [''])[0];
+    const trailing = (node.nodeValue.match(/\s*$/) || [''])[0];
+    node.nodeValue = leading + (lang === 'en' && I18N[key] ? I18N[key] : key) + trailing;
+  });
+  if(typeof updateDemo === 'function') updateDemo();
+  if(typeof updateROI === 'function') updateROI();
 }
-function archSection(title, tone, labels, rows, lang){
- return `<div class="arch-section"><div class="arch-head ${tone}">${title}</div><div class="arch-grid header"><div class="arch-cell">${labels[0]}</div><div class="arch-cell">${labels[1]}</div><div class="arch-cell">${labels[2]}</div><div class="arch-cell">${labels[3]}</div></div>${rows.map(r=>`<div class="arch-grid"><div class="arch-cell" data-label="${labels[0]}"><strong>${r[0]}</strong></div><div class="arch-cell" data-label="${labels[1]}"><span class="badge ${/Yes|Có/.test(r[1])?'yes':'no'}">${r[1]}</span></div><div class="arch-cell" data-label="${labels[2]}"><span class="badge ${/Yes|Có/.test(r[2])?'yes':'no'}">${r[2]}</span></div><div class="arch-cell" data-label="${labels[3]}">${r[3]}</div></div>`).join('')}</div>`;
+function peopleLabel(n) { return currentLang === 'en' ? `${new Intl.NumberFormat('en-US').format(n)} people` : `${new Intl.NumberFormat('vi-VN').format(n)} người`; }
+function fmtShortLocalizedVND(n) {
+  if(currentLang === 'en') {
+    if(n >= 1000000000) return (n/1000000000).toFixed(n%1000000000===0?0:1) + 'B VND';
+    if(n >= 1000000) return (n/1000000).toFixed(n%1000000===0?0:1) + 'M VND';
+    return fmtVND(n);
+  }
+  return fmtShortVND(n);
 }
-let lang='en'; let active=0;
-const nav=document.getElementById('nav'), content=document.getElementById('content'), sidebar=document.getElementById('sidebar'), overlay=document.getElementById('overlay');
-function renderShell(){
- document.documentElement.lang=lang;
- document.getElementById('brandSub').textContent=I18N[lang].brandSub;
- document.getElementById('menuLabel').textContent=I18N[lang].menu;
- nav.innerHTML=I18N[lang].nav.map((n,i)=>`<button type="button" class="${i===active?'active':''}" onclick="setTab(${i})"><span class="nav-num">${String(i+1).padStart(2,'0')}</span><span>${n}</span></button>`).join('');
- updateLangButtons();
- setTab(active,false);
+
+const VND_RATE = 25000;
+const fmtVND = n => new Intl.NumberFormat('vi-VN', {maximumFractionDigits:0}).format(Math.round(n)) + 'đ';
+const fmtShortVND = n => {
+  if(n >= 1000000000) return (n/1000000000).toFixed(n%1000000000===0?0:1).replace('.',',') + ' tỷ';
+  if(n >= 1000000) return (n/1000000).toFixed(n%1000000===0?0:1).replace('.',',') + ' triệu';
+  return fmtVND(n);
+};
+const fmtUSD = n => new Intl.NumberFormat('en-US', {maximumFractionDigits:0}).format(n) + ' USD';
+const groupSize = document.getElementById('groupSize');
+const monthlyContribution = document.getElementById('monthlyContribution');
+const requestCount = document.getElementById('requestCount');
+const groupValue = document.getElementById('groupValue');
+const contributionValue = document.getElementById('contributionValue');
+const requestValue = document.getElementById('requestValue');
+const poolResult = document.getElementById('poolResult');
+const payoutResult = document.getElementById('payoutResult');
+const multipleResult = document.getElementById('multipleResult');
+const peoplePaid = document.getElementById('peoplePaid');
+const totalPayout = document.getElementById('totalPayout');
+const cvpText = document.getElementById('cvpText');
+let displayCurrency = 'VND';
+function dualMoney(vnd){
+  const usd = vnd / VND_RATE;
+  return displayCurrency === 'VND' ? `${fmtVND(vnd)} · ${fmtUSD(usd)}` : `${fmtUSD(usd)} · ${fmtVND(vnd)}`;
 }
-function setTab(i, close=true){
- active=i;
- [...nav.children].forEach((b,idx)=>b.classList.toggle('active',idx===i));
- document.getElementById('pageNum').textContent=String(i+1).padStart(2,'0');
- document.getElementById('pageTitle').textContent=I18N[lang].nav[i];
- document.getElementById('pageSub').textContent=I18N[lang].sub[i];
- content.classList.remove('active');
- const html=TABS[i].render()[lang];
- setTimeout(()=>{content.innerHTML=html;content.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});},60);
- if(close && window.innerWidth<=1120) closeMenu();
+function updateDemo(){
+  const g = parseInt(groupSize.value,10);
+  const c = parseInt(monthlyContribution.value,10);
+  const r = parseInt(requestCount.value,10);
+  const pool = g*c;
+  const perPerson = Math.floor(pool/r);
+  const multiple = (perPerson/c).toFixed(1).replace('.0','');
+  groupValue.textContent = peopleLabel(g);
+  contributionValue.textContent = fmtVND(c);
+  requestValue.textContent = peopleLabel(r);
+  poolResult.textContent = displayCurrency === 'VND' ? fmtVND(pool) : fmtUSD(pool/VND_RATE);
+  payoutResult.textContent = displayCurrency === 'VND' ? fmtVND(perPerson) : fmtUSD(perPerson/VND_RATE);
+  multipleResult.textContent = currentLang === 'en'
+    ? 'Equivalent to ' + multiple + 'x the monthly contribution · ' + dualMoney(perPerson)
+    : 'Tương đương ' + multiple + 'x khoản đóng hằng tháng · ' + dualMoney(perPerson);
+  peoplePaid.textContent = new Intl.NumberFormat(currentLang === 'en' ? 'en-US' : 'vi-VN').format(r);
+  totalPayout.textContent = fmtShortLocalizedVND(pool);
+  cvpText.textContent = currentLang === 'en'
+    ? `${g} employees each contribute ${fmtVND(c)}/month. When needed, one employee receives ${fmtVND(perPerson)} immediately — ${multiple}x the contribution. No interest. No debt. No asking anyone.`
+    : `${g} nhân viên, mỗi người đóng ${fmtVND(c)}/tháng. Khi cần — một người nhận ngay ${fmtVND(perPerson)}, gấp ${multiple} lần. Không lãi. Không nợ. Không xin ai.`;
 }
-function updateLangButtons(){
- ['top-en','side-en'].forEach(id=>document.getElementById(id).classList.toggle('active',lang==='en'));
- ['top-vi','side-vi'].forEach(id=>document.getElementById(id).classList.toggle('active',lang==='vi'));
+[groupSize,monthlyContribution,requestCount].forEach(el=>el.addEventListener('input', updateDemo));
+
+const roiEmployees = document.getElementById('roiEmployees');
+const roiSalary = document.getElementById('roiSalary');
+const roiBefore = document.getElementById('roiBefore');
+const roiAfter = document.getElementById('roiAfter');
+const roiEmployeeValue = document.getElementById('roiEmployeeValue');
+const roiSalaryValue = document.getElementById('roiSalaryValue');
+const roiBeforeValue = document.getElementById('roiBeforeValue');
+const roiAfterValue = document.getElementById('roiAfterValue');
+const roiSavedPeople = document.getElementById('roiSavedPeople');
+const roiSavings = document.getElementById('roiSavings');
+const roiCostPerExit = document.getElementById('roiCostPerExit');
+const roiDelta = document.getElementById('roiDelta');
+const roiText = document.getElementById('roiText');
+function updateROI(){
+  const employees = parseInt(roiEmployees.value,10);
+  const salary = parseInt(roiSalary.value,10);
+  const before = parseInt(roiBefore.value,10);
+  let after = parseInt(roiAfter.value,10);
+  if(after > before) after = before;
+  const delta = Math.max(0, before-after);
+  const savedPeople = Math.round(employees * delta / 100);
+  const costPerExit = salary * 2;
+  const savings = savedPeople * costPerExit;
+  roiEmployeeValue.textContent = peopleLabel(employees);
+  roiSalaryValue.textContent = fmtVND(salary);
+  roiBeforeValue.textContent = before + '%';
+  roiAfterValue.textContent = after + '%';
+  roiSavedPeople.textContent = new Intl.NumberFormat(currentLang === 'en' ? 'en-US' : 'vi-VN').format(savedPeople);
+  roiSavings.textContent = fmtShortLocalizedVND(savings);
+  roiCostPerExit.textContent = fmtShortLocalizedVND(costPerExit);
+  roiDelta.textContent = delta + '%';
+  roiText.textContent = currentLang === 'en'
+    ? `With ${new Intl.NumberFormat('en-US').format(employees)} employees, if attrition drops from ${before}% to ${after}%, the company retains about ${savedPeople} more people per year. At an average salary of ${fmtVND(salary)}, estimated savings are ${fmtShortLocalizedVND(savings)} per year.`
+    : `Với ${new Intl.NumberFormat('vi-VN').format(employees)} nhân sự, nếu tỷ lệ nghỉ việc giảm từ ${before}% xuống ${after}%, doanh nghiệp giữ lại thêm khoảng ${savedPeople} người/năm. Với lương trung bình ${fmtVND(salary)}, khoản tiết kiệm ước tính là ${fmtShortVND(savings)}/năm.`;
 }
-function setLang(l){lang=l;renderShell();}
-function openMenu(){sidebar.classList.add('open');overlay.classList.add('open')}
-function closeMenu(){sidebar.classList.remove('open');overlay.classList.remove('open')}
-document.getElementById('menuBtn').addEventListener('click',openMenu);
-overlay.addEventListener('click',closeMenu);
-document.getElementById('top-en').addEventListener('click',()=>setLang('en'));
-document.getElementById('top-vi').addEventListener('click',()=>setLang('vi'));
-document.getElementById('side-en').addEventListener('click',()=>setLang('en'));
-document.getElementById('side-vi').addEventListener('click',()=>setLang('vi'));
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
-renderShell();
+[roiEmployees,roiSalary,roiBefore,roiAfter].forEach(el=>el.addEventListener('input', updateROI));
+updateDemo();
+updateROI();
+setLanguage('vi');
+const observer = new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('show')}})},{threshold:.08});
+document.querySelectorAll('.fade').forEach(el=>observer.observe(el));
 </script>
 </body>
 </html>
